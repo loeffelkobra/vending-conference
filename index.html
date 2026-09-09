@@ -496,8 +496,7 @@ a.hb-item:hover{background:rgba(255,255,255,.12)}
 .sp-bio{font-size:14px;line-height:1.62;color:var(--muted)}
 .sp-bio strong{color:var(--ink);font-weight:600}
 /* Dezente Firmenzeile unter dem Speaker */
-.sp-brand{position:relative;margin-top:20px;padding-top:16px;width:100%;display:flex;justify-content:center;align-items:center;gap:8px}
-.sp-brand::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--line-soft)}
+.sp-brand{margin-top:auto;padding-top:22px;width:100%;height:calc(22px + 46px);display:flex;justify-content:center;align-items:center}
 .sp-brand-logo{display:block;background:center/contain no-repeat;opacity:.5;filter:grayscale(1);transition:opacity .35s,filter .35s}
 .sp-card:hover .sp-brand-logo{opacity:1;filter:none}
 .sp-brand-spaetimat{width:46px;height:46px;background-image:var(--spaetimat)}
