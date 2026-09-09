@@ -495,6 +495,13 @@ a.hb-item:hover{background:rgba(255,255,255,.12)}
 .sp-card:hover .sp-tag{border-color:rgba(255,98,0,.24);color:var(--ink-soft)}
 .sp-bio{font-size:14px;line-height:1.62;color:var(--muted)}
 .sp-bio strong{color:var(--ink);font-weight:600}
+/* Dezente Firmenzeile unter dem Speaker */
+.sp-brand{margin-top:auto;padding-top:18px;width:100%;display:flex;justify-content:center;align-items:center;gap:8px}
+.sp-brand::before{content:'';position:absolute;left:26px;right:26px;margin-top:-18px;height:1px;background:var(--line-soft)}
+.sp-brand-logo{display:block;background:center/contain no-repeat;opacity:.5;filter:grayscale(1);transition:opacity .35s,filter .35s}
+.sp-card:hover .sp-brand-logo{opacity:1;filter:none}
+.sp-brand-spaetimat{width:46px;height:46px;background-image:var(--spaetimat)}
+.sp-brand-hest{width:72px;height:18px;background-image:var(--hest-dark)}
 
 /* ===== Secret Speaker ===== */
 .sp-card.secret{background:linear-gradient(168deg,#17150F 0%,#0E0C09 55%,#1C0F04 100%);
@@ -1404,6 +1411,7 @@ a.tr-chip:hover{border-color:rgba(255,98,0,.35);background:var(--orange-soft);co
         <div class="sp-name">Jonas Wieck</div>
         <div class="sp-tags"><span class="sp-tag">SpätiMat</span><span class="sp-tag">100+ Standorte</span><span class="sp-tag">Skalierung</span></div>
         <p class="sp-bio">Von null auf <strong>über 100 Standorte in unter drei Jahren</strong>. In seiner Keynote geht er den Weg Schritt für Schritt durch, inklusive der Zahlen, Fehler und Abkürzungen.</p>
+        <div class="sp-brand"><span class="sp-brand-logo sp-brand-spaetimat" role="img" aria-label="SpätiMat"></span></div>
       </div>
       <div class="card sp-card fx" data-fxd="110">
         <div class="sp-ghost">Juckel</div>
@@ -1411,6 +1419,7 @@ a.tr-chip:hover{border-color:rgba(255,98,0,.35);background:var(--orange-soft);co
         <div class="sp-name">Steven Juckel</div>
         <div class="sp-tags"><span class="sp-tag">100+ Vape-Automaten</span><span class="sp-tag">Eigenes Operating</span></div>
         <p class="sp-bio">Betreibt <strong>über 100 Vape-Automaten im eigenen Operating</strong>. Zeigt, wie Beschaffung, Befüllung und Recht in dieser Nische wirklich funktionieren.</p>
+        <div class="sp-brand"><span class="sp-brand-logo sp-brand-hest" role="img" aria-label="HEST"></span></div>
       </div>
       <div class="card sp-card secret fx" data-fxd="220">
         <div class="sp-photo secret-photo">
