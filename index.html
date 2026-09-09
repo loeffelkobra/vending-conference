@@ -985,6 +985,16 @@ a.tr-chip:hover{border-color:rgba(255,98,0,.35);background:var(--orange-soft);co
 .fl input.err,.fl textarea.err{border-color:#E04500;box-shadow:0 0 0 3px rgba(224,69,0,.18)}
 .mdl-send{width:100%;margin-top:4px}
 .mdl-note{font-size:12px;line-height:1.5;color:rgba(255,255,255,.42);text-align:center}
+.mdl-send[disabled]{opacity:.6;cursor:wait}
+.mdl-ok{display:none;margin-top:24px;padding:26px 22px;border-radius:18px;text-align:center;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,138,61,.28)}
+.mdl-ok .ck{width:48px;height:48px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;
+  background:var(--orange);box-shadow:0 0 0 6px rgba(255,98,0,.18)}
+.mdl-ok .ck svg{width:22px;height:22px}
+.mdl-ok h4{font-size:20px;font-weight:700;letter-spacing:-.03em;color:#fff;margin-bottom:8px}
+.mdl-ok p{font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.62)}
+.mdl-box.sent .mdl-form{display:none}
+.mdl-box.sent .mdl-ok{display:block}
 @media(max-width:560px){.mdl-box{padding:28px 20px 24px;border-radius:22px}.fr{grid-template-columns:1fr}}
 
 /* ===== Footer ===== */
@@ -1704,8 +1714,13 @@ a.tr-chip:hover{border-color:rgba(255,98,0,.35);background:var(--orange-soft);co
       </label>
       <label class="fl"><span>Nachricht</span><textarea name="nachricht" rows="3" placeholder="Womit stellt ihr aus? Wie viel Fläche braucht ihr?"></textarea></label>
       <button class="btn mdl-send" type="submit">Anfrage senden<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
-      <p class="mdl-note">Mit dem Absenden öffnet sich dein E-Mail-Programm mit der fertigen Anfrage an info@spaetimat.com.</p>
+      <p class="mdl-note">Deine Anfrage geht direkt an das SpätiMat-Team. Wir melden uns meist am selben Tag.</p>
     </form>
+    <div class="mdl-ok" role="status" aria-live="polite">
+      <div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h4>Anfrage ist raus.</h4>
+      <p>Danke! Wir melden uns meist noch am selben Tag mit Standflächen und Preisen bei dir.</p>
+    </div>
   </div>
 </div>
 
@@ -1780,12 +1795,24 @@ var TK = {
   if(!mdl||!form) return;
   var lastFocus=null;
   function open(){ lastFocus=document.activeElement; mdl.hidden=false; document.body.style.overflow='hidden';
+    var bx=mdl.querySelector('.mdl-box'); if(bx) bx.classList.remove('sent');
     var f=mdl.querySelector('input'); if(f) setTimeout(function(){f.focus();},60); }
   function close(){ mdl.hidden=true; document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
   document.querySelectorAll('[data-open-exhibitor]').forEach(function(b){ b.addEventListener('click',open); });
   document.querySelectorAll('[data-close-exhibitor]').forEach(function(b){ b.addEventListener('click',close); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !mdl.hidden) close(); });
 
+  /* Zapier Catch Hook: URL aus Zapier ("Webhooks by Zapier" > "Catch Hook") hier eintragen */
+  var ZAPIER_WEBHOOK_URL='https://hooks.zapier.com/hooks/catch/XXXXXXX/XXXXXXX/';
+
+  var box=mdl.querySelector('.mdl-box'), sendBtn=form.querySelector('.mdl-send');
+  function mailtoFallback(d){
+    var body='Firma: '+d.firma.value+'\nAnsprechpartner: '+d.name.value+'\nE-Mail: '+d.mail.value+
+             '\nTelefon: '+(d.tel.value||'-')+'\nThema: '+d.thema.value+'\n\nNachricht:\n'+(d.nachricht.value||'-');
+    window.location.href='mailto:info@spaetimat.com?subject='+
+      encodeURIComponent('Aussteller-Paket Vending Conference 2026 - '+d.firma.value)+
+      '&body='+encodeURIComponent(body);
+  }
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var ok=true;
@@ -1796,11 +1823,40 @@ var TK = {
     });
     if(!ok){ var first=form.querySelector('.err'); if(first) first.focus(); return; }
     var d=form.elements;
-    var body='Firma: '+d.firma.value+'\nAnsprechpartner: '+d.name.value+'\nE-Mail: '+d.mail.value+
-             '\nTelefon: '+(d.tel.value||'-')+'\nThema: '+d.thema.value+'\n\nNachricht:\n'+(d.nachricht.value||'-');
-    window.location.href='mailto:info@spaetimat.com?subject='+
-      encodeURIComponent('Aussteller-Paket Vending Conference 2026 - '+d.firma.value)+
-      '&body='+encodeURIComponent(body);
+
+    /* Alle Felder als einzelne Zapier-Datenfelder */
+    var payload={
+      firma: d.firma.value.trim(),
+      name: d.name.value.trim(),
+      mail: d.mail.value.trim(),
+      tel: d.tel.value.trim(),
+      thema: d.thema.value,
+      nachricht: d.nachricht.value.trim(),
+      quelle: 'Vending Conference 2026 - Aussteller-Formular',
+      seite: window.location.href,
+      gesendet_am: new Date().toISOString()
+    };
+
+    if(!/^https:\/\/hooks\.zapier\.com\//.test(ZAPIER_WEBHOOK_URL) || ZAPIER_WEBHOOK_URL.indexOf('XXXX')>-1){
+      mailtoFallback(d); return;
+    }
+
+    var params=new URLSearchParams();
+    Object.keys(payload).forEach(function(k){ params.append(k,payload[k]); });
+
+    var label=sendBtn.firstChild;
+    var oldLabel=label.nodeValue;
+    sendBtn.disabled=true; label.nodeValue='Wird gesendet…';
+
+    /* form-urlencoded: kein CORS-Preflight, Zapier parst jedes Feld einzeln */
+    fetch(ZAPIER_WEBHOOK_URL,{method:'POST',body:params})
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); })
+      .then(function(){
+        box.classList.add('sent'); form.reset();
+        var h=box.querySelector('.mdl-ok h4'); if(h){ h.setAttribute('tabindex','-1'); h.focus(); }
+      })
+      .catch(function(){ mailtoFallback(d); })
+      .then(function(){ sendBtn.disabled=false; label.nodeValue=oldLabel; });
   });
   form.addEventListener('input',function(e){ if(e.target.classList) e.target.classList.remove('err'); });
 })();
