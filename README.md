@@ -1,4 +1,4 @@
-# Vending Conference 2026 – Event-Page
+# Vending Summit 2026 – Event-Page
 
 Statische Landingpage (eine einzige `index.html`, keine Build-Schritte).
 
