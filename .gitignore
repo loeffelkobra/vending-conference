@@ -2,3 +2,4 @@
 .vercel
 node_modules
 .claude
+email/_preview*.html
