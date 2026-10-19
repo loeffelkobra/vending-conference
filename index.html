@@ -1165,6 +1165,23 @@ a.tr-chip:hover{border-color:rgba(255,98,0,.35);background:var(--orange-soft);co
   .foot{padding:72px 18px 32px}
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1544241537270144');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head><body>
 
 <!-- ===== NAV (erscheint beim Scrollen) ===== -->
@@ -1919,6 +1936,54 @@ a.tr-chip:hover{border-color:rgba(255,98,0,.35);background:var(--orange-soft);co
 (function(){
 "use strict";
 var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Tracking: UTM-Attribution ----------
+   Der Checkout läuft auf Ablefy, die UTMs der Einstiegs-URL kämen sonst nie auf der
+   Danke-Seite an. Die Seite merkt sie sich deshalb 90 Tage in localStorage ("vs_attr"):
+   first = erster Kontakt (UTMs oder externer Referrer), last = letzter Aufruf mit UTMs.
+   Derselbe Block steht in danke.html, dort gehen die Werte mit dem Purchase-Event an Meta. */
+var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id'];
+var attr = (function(){
+  var a = {}, now = Date.now(), uq = new URLSearchParams(location.search), hit = {}, ref = '';
+  try{ a = JSON.parse(localStorage.getItem('vs_attr') || '{}') || {}; }catch(e){}
+  if(now - ((a.last || a.first || {}).ts || 0) > 90 * 864e5) a = {};
+  UTM_KEYS.forEach(function(k){ var v = (uq.get(k) || '').trim(); if(v) hit[k] = v.slice(0, 100); });
+  try{ ref = document.referrer ? new URL(document.referrer).hostname : ''; }catch(e){}
+  if(ref === location.hostname || /(^|\.)(myablefy|ablefy|elopage)\.(com|io|de)$/.test(ref)) ref = '';
+  if(Object.keys(hit).length){
+    hit.landing_page = location.pathname; hit.ts = now;
+    if(ref) hit.referrer = ref;
+    if(!a.first) a.first = hit;
+    a.last = hit;
+  } else if(!a.first){
+    a.first = { referrer: ref || '(direct)', landing_page: location.pathname, ts: now };
+  }
+  try{ localStorage.setItem('vs_attr', JSON.stringify(a)); }catch(e){}
+  return a;
+})();
+/* Event-Parameter: letzte UTMs voll, vom Erstkontakt Quelle, Medium, Kampagne und Referrer */
+function attrParams(){
+  var p = {}, l = attr.last || {}, f = attr.first || {};
+  UTM_KEYS.forEach(function(k){ if(l[k]) p[k] = l[k]; });
+  ['utm_source','utm_medium','utm_campaign','referrer'].forEach(function(k){ if(f[k]) p['first_' + k] = f[k]; });
+  if(l.landing_page || f.landing_page) p.landing_page = l.landing_page || f.landing_page;
+  return p;
+}
+
+/* ---------- Meta Pixel: InitiateCheckout beim Klick auf einen Ticket-Button ---------- */
+document.querySelectorAll('a[href*="myablefy.com"]').forEach(function(a){
+  a.addEventListener('click', function(){
+    if(typeof fbq !== 'function') return;
+    var card = a.closest('.tk-card'), vip = !!(card && card.classList.contains('vip'));
+    var priceEl = card && card.querySelector('.tk-now');
+    var price = priceEl ? parseFloat(priceEl.textContent.replace(/[^\d,]/g,'').replace(',','.')) : NaN;
+    var p = attrParams();
+    p.content_name = 'Vending Summit 2026, ' + (vip ? 'VIP' : 'Basic') + '-Ticket';
+    p.content_type = 'product'; p.content_ids = [vip ? 'vs26-vip' : 'vs26-basic']; p.num_items = 1;
+    if(!isNaN(price)){ p.value = price; p.currency = 'EUR'; }
+    fbq('track', 'InitiateCheckout', p);
+  });
+});
 
 /* ---------- Scroll-Reveal ---------- */
 var io = new IntersectionObserver(function(es){

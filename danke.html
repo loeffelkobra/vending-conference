@@ -441,6 +441,32 @@ a.tr-chip:hover{border-color:rgba(255,98,0,.35);background:var(--orange-soft);co
   .foot{padding:72px 18px 32px}
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+/* Advanced Matching: Ablefy übergibt E-Mail und Name des Käufers in der URL.
+   fbevents.js hasht die Werte (SHA-256) im Browser, bevor sie an Meta gehen.
+   Das Purchase-Event feuert im Seiten-Script unten (Abschnitt "Meta Pixel: Purchase"). */
+(function(){
+  var q = new URLSearchParams(location.search), am = {};
+  [['em','payer_email'],['fn','payer_first_name'],['ln','payer_last_name']].forEach(function(m){
+    var v = (q.get(m[1]) || '').trim().toLowerCase(); if(v) am[m[0]] = v;
+  });
+  fbq('init', '1544241537270144', am);
+})();
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head><body>
 
 <!-- ===== NAV ===== -->
@@ -737,9 +763,13 @@ var tkLabel = isVip ? 'VIP' : 'Basic';
 var fullName = d.name || [d.first, d.last].filter(Boolean).join(' ');
 var firstName = d.first || (fullName ? fullName.split(/\s+/)[0] : '');
 
+/* Betrag als Zahl: "399", "399.00", "399,00 €", "1.197,00" -> 399 / 1197, sonst NaN */
+function toNum(v){
+  return parseFloat(String(v).replace(/[^\d,.\-]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.'));
+}
 /* Betrag formatieren: "399", "399.00", "399,00", "399,00 €" -> "399,00 €" */
 function money(v, cur){
-  var n = parseFloat(String(v).replace(/[^\d,.\-]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.'));
+  var n = toNum(v);
   if(isNaN(n)) return v;
   var c = (cur || 'EUR').toUpperCase();
   try{ return n.toLocaleString('de-DE',{style:'currency',currency:c}); }
@@ -754,7 +784,7 @@ function niceDate(v){
 
 /* Anzahl ableiten: Betrag / Einzelpreis muss eine ganze Zahl zwischen 1 und 6 sein */
 function inferQty(amount){
-  var n = parseFloat(String(amount).replace(/[^\d,.\-]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.'));
+  var n = toNum(amount);
   if(isNaN(n) || n <= 0) return 0;
   var hits = [];
   TICKET_PRICES[isVip ? 'vip' : 'basic'].forEach(function(unit){
@@ -822,15 +852,87 @@ function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {'&':'&
 
 /* Für Tracking-Tools (Meta Pixel, GA4, GTM) liegen die Daten bereit:
    window.VS_ORDER = { ticket, name, email, order, qty, amount, currency }
-   Beispiel Meta:  fbq('track','Purchase',{value: VS_ORDER.amount, currency: VS_ORDER.currency, content_name: VS_ORDER.ticket})
-   Beispiel GA4:   gtag('event','purchase',{transaction_id: VS_ORDER.order, value: VS_ORDER.amount, currency: VS_ORDER.currency})   */
+   Meta Purchase ist unten eingebaut, Beispiel GA4:
+   gtag('event','purchase',{transaction_id: VS_ORDER.order, value: VS_ORDER.amount, currency: VS_ORDER.currency})   */
+var amountNum = toNum(d.amount);
 window.VS_ORDER = {
   ticket: tkLabel, product: d.product, qty: qty || 1, name: fullName, email: d.email,
   order: d.order, transaction: d.txn, state: d.state, coupon: d.coupon,
-  amount: parseFloat(String(d.amount).replace(',','.')) || null,
+  amount: isNaN(amountNum) ? null : amountNum,
   currency: (d.currency || 'EUR').toUpperCase(),
   campaign: d.campaign, add_id_1: d.add1, add_id_2: d.add2
 };
+
+/* ---------- Tracking: UTM-Attribution ----------
+   Gleicher Block wie in index.html: Die Landingpage merkt sich die UTMs der Einstiegs-URL
+   90 Tage in localStorage ("vs_attr"), weil sie den Umweg über den Ablefy-Checkout nicht
+   überleben. first = erster Kontakt (UTMs oder externer Referrer), last = letzter Aufruf mit UTMs. */
+var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id'];
+var attr = (function(){
+  var a = {}, now = Date.now(), hit = {}, ref = '';
+  try{ a = JSON.parse(localStorage.getItem('vs_attr') || '{}') || {}; }catch(e){}
+  if(now - ((a.last || a.first || {}).ts || 0) > 90 * 864e5) a = {};
+  UTM_KEYS.forEach(function(k){ var v = (q.get(k) || '').trim(); if(v) hit[k] = v.slice(0, 100); });
+  try{ ref = document.referrer ? new URL(document.referrer).hostname : ''; }catch(e){}
+  if(ref === location.hostname || /(^|\.)(myablefy|ablefy|elopage)\.(com|io|de)$/.test(ref)) ref = '';
+  if(Object.keys(hit).length){
+    hit.landing_page = location.pathname; hit.ts = now;
+    if(ref) hit.referrer = ref;
+    if(!a.first) a.first = hit;
+    a.last = hit;
+  } else if(!a.first){
+    a.first = { referrer: ref || '(direct)', landing_page: location.pathname, ts: now };
+  }
+  try{ localStorage.setItem('vs_attr', JSON.stringify(a)); }catch(e){}
+  return a;
+})();
+/* Event-Parameter: letzte UTMs voll, vom Erstkontakt Quelle, Medium, Kampagne und Referrer */
+function attrParams(){
+  var p = {}, l = attr.last || {}, f = attr.first || {};
+  UTM_KEYS.forEach(function(k){ if(l[k]) p[k] = l[k]; });
+  ['utm_source','utm_medium','utm_campaign','referrer'].forEach(function(k){ if(f[k]) p['first_' + k] = f[k]; });
+  if(l.landing_page || f.landing_page) p.landing_page = l.landing_page || f.landing_page;
+  return p;
+}
+
+/* ---------- Meta Pixel: Purchase ----------
+   Basiscode, PageView und Advanced Matching (E-Mail, Name) stehen im <head>.
+   Hier: Kaufwert, Ticket, Anzahl, Bestellnummer, Gutschein, Zahlungsstatus und UTMs.
+   - Feuert nur mit Bestelldaten (order_id, transaction_id oder price) und nicht bei
+     abgebrochener oder fehlgeschlagener Zahlung. "pending" (Vorkasse, SEPA) zählt als Kauf,
+     der Status steht als payment_state im Event.
+   - Pro Bestellung nur einmal: Reload oder erneutes Öffnen der Seite werden ignoriert.
+     eventID = Bestellnummer, damit sich das Event später mit der Conversions API deduplizieren lässt.
+   - Zum Testen &test=1 an die URL hängen: dann geht nichts an Meta, das Event steht in der Konsole. */
+(function(){
+  var o = window.VS_ORDER, orderRef = o.order || o.transaction;
+  if(!orderRef && o.amount === null) return;
+  if(/fail|cancel|declin|abort|error|reject|refund|storn|abgebrochen|fehlgeschlagen/i.test(o.state)) return;
+  var n = o.qty, id = isVip ? 'vs26-vip' : 'vs26-basic';
+  var value = o.amount !== null ? o.amount : TICKET_PRICES[isVip ? 'vip' : 'basic'][0] * n;
+  var p = attrParams();
+  p.value = Math.round(value * 100) / 100;
+  p.currency = o.currency;
+  p.content_name = 'Vending Summit 2026, ' + tkLabel + '-Ticket';
+  p.content_type = 'product';
+  p.content_ids = [id];
+  p.contents = [{ id: id, quantity: n, item_price: Math.round(value / n * 100) / 100 }];
+  p.num_items = n;
+  p.ticket_type = tkLabel;
+  if(orderRef) p.order_id = orderRef;
+  if(o.state) p.payment_state = o.state;
+  if(o.coupon) p.coupon = o.coupon;
+  if(o.campaign) p.ablefy_campaign_id = o.campaign;
+  if(o.amount === null) p.value_estimated = true;
+
+  if(q.get('test') === '1'){ console.info('[Meta Pixel] Testmodus, Purchase nicht gesendet:', p); return; }
+  var key = orderRef || [p.value, o.email, o.product].join('|'), sent = [];
+  try{ sent = JSON.parse(localStorage.getItem('vs_px_purchases') || '[]'); }catch(e){}
+  if(sent.indexOf(key) > -1 || typeof fbq !== 'function') return;
+  fbq('track', 'Purchase', p, orderRef ? { eventID: 'purchase_' + orderRef } : {});
+  sent.push(key);
+  try{ localStorage.setItem('vs_px_purchases', JSON.stringify(sent.slice(-20))); }catch(e){}
+})();
 
 /* ---------- Scroll-Reveal ---------- */
 var io = new IntersectionObserver(function(es){
