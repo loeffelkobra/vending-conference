@@ -24,8 +24,8 @@ Alternativ per CLI: `npx vercel --prod` im Projektordner.
   (Last-Minute, 49 € netto statt 149 €), Hero mit „Die Automatenkonferenz des Jahres“, ohne VIP und
   ohne Aussteller-Anfrage, mit Sticky-Button auf dem Handy. Gepflegt wird sie als Kopie von `index.html`:
   Inhaltliche Änderungen an der Startseite müssen hier nachgezogen werden.
-  - **Checkout-Link:** In Ablefy einen eigenen Preisplan bzw. ein eigenes Produkt für 49 € anlegen
-    (Name mit „Last Minute“) und den Link in den beiden Buttons (`href="https://myablefy.com/…"`) eintragen.
+  - **Checkout-Link:** `https://myablefy.com/s/spaetimat/last-minute-tickets/payment` (eigenes Ablefy-Produkt,
+    steht in den beiden Kauf-Buttons; alle übrigen Buttons springen zur Ticketkarte `#tickets`).
   - **Enddatum der Aktion (optional):** im Script `LM.offerEnd`, z. B. `'2026-11-16T23:59:59+01:00'`.
     Dann steht auf der Ticket-Karte und in der Sticky-Leiste „Preis gilt nur bis …“, sonst „Noch X Tage bis zum Summit“.
 - `vercel.json` – Clean URLs + Security-Header
