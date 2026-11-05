@@ -48,6 +48,7 @@ Alternativ per CLI: `npx vercel --prod` im Projektordner.
 - **Purchase feuert** nur mit Bestelldaten in der URL („Parameter übergeben“ in Ablefy muss an sein),
   nicht bei abgebrochener oder fehlgeschlagener Zahlung und pro Bestellung nur einmal (Reload zählt nicht).
   `eventID` = `purchase_<order_id>` für eine spätere Deduplizierung mit der Conversions API.
+- **Last-Minute-Käufer** sehen auf der Danke-Seite eine eigene Ticketgrafik, keinen VIP-Hinweis, und alle Links (Event-Seite, Hotels, Agenda, Teilen, Kalender) führen auf `/last-minute` statt auf die Startseite.
 - **Last-Minute-Käufe** erkennt die Danke-Seite am Produkt-/Preisplannamen („Last Minute“), an `&lm=1` oder am Betrag (Vielfaches von 49 € netto bzw. 58,31 € brutto).
 - **Test:** `&test=1` an die Danke-URL hängen, dann landet das Purchase-Event nur in der Browser-Konsole.
 - In Ablefy **nicht zusätzlich** einen Meta-Pixel mit Purchase-Event hinterlegen, sonst zählt jeder Kauf doppelt.
