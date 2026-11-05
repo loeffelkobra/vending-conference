@@ -739,7 +739,7 @@ var VIP_PLAN_IDS = [];
 /* Ablefy übergibt keine Stückzahl, nur den gezahlten Gesamtpreis ("price").
    Ist der Betrag ein Vielfaches eines Ticketpreises (netto oder brutto, 19 % MwSt.),
    zeigt die Seite die Anzahl an. Preise hier pflegen, wenn sie sich ändern. */
-var TICKET_PRICES = { basic: [149, 199], vip: [399, 499] };
+var TICKET_PRICES = { basic: [149, 199], vip: [399, 499], lastminute: [49] };
 var MAX_QTY = 6;
 
 var q = new URLSearchParams(location.search);
@@ -757,7 +757,17 @@ Object.keys(ALIASES).forEach(function(k){ d[k] = pick(k); });
 /* Ticket-Typ: Produktname oder Preisplan mit "vip" ist VIP, sonst Basic */
 var planHit = d.plan && VIP_PLAN_IDS.some(function(id){ return d.plan.split(',').indexOf(String(id)) > -1; });
 var isVip = /vip/i.test(d.product) || /vip/i.test(d.plan) || planHit || q.get('vip') === '1';
-var tkLabel = isVip ? 'VIP' : 'Basic';
+/* Last-Minute-Ticket (49 €, Seite /last-minute): Produkt- oder Preisplanname mit "Last Minute",
+   ?lm=1 oder ein Betrag, der nur zu 49 € netto/brutto passt */
+function fitsPrice(amount, units){
+  var n = toNum(amount); if(isNaN(n) || n <= 0) return false;
+  return units.some(function(unit){ return [unit, unit * 1.19].some(function(u){
+    var k = n / u, r = Math.round(k); return r >= 1 && r <= MAX_QTY && Math.abs(k - r) < .01; }); });
+}
+var isLm = !isVip && (/last.?minute/i.test(d.product) || /last.?minute/i.test(d.plan) || q.get('lm') === '1' ||
+  (!/basic/i.test(d.product) && fitsPrice(d.amount, TICKET_PRICES.lastminute) && !fitsPrice(d.amount, TICKET_PRICES.basic)));
+var tkKey = isVip ? 'vip' : (isLm ? 'lastminute' : 'basic');
+var tkLabel = isVip ? 'VIP' : (isLm ? 'Last-Minute' : 'Basic');
 
 /* Name zusammensetzen */
 var fullName = d.name || [d.first, d.last].filter(Boolean).join(' ');
@@ -787,7 +797,7 @@ function inferQty(amount){
   var n = toNum(amount);
   if(isNaN(n) || n <= 0) return 0;
   var hits = [];
-  TICKET_PRICES[isVip ? 'vip' : 'basic'].forEach(function(unit){
+  TICKET_PRICES[tkKey].forEach(function(unit){
     [unit, unit * 1.19].forEach(function(u){
       var k = n / u, r = Math.round(k);
       if(r >= 1 && r <= MAX_QTY && Math.abs(k - r) < .01 && hits.indexOf(r) < 0) hits.push(r);
@@ -908,8 +918,8 @@ function attrParams(){
   var o = window.VS_ORDER, orderRef = o.order || o.transaction;
   if(!orderRef && o.amount === null) return;
   if(/fail|cancel|declin|abort|error|reject|refund|storn|abgebrochen|fehlgeschlagen/i.test(o.state)) return;
-  var n = o.qty, id = isVip ? 'vs26-vip' : 'vs26-basic';
-  var value = o.amount !== null ? o.amount : TICKET_PRICES[isVip ? 'vip' : 'basic'][0] * n;
+  var n = o.qty, id = isVip ? 'vs26-vip' : (isLm ? 'vs26-lastminute' : 'vs26-basic');
+  var value = o.amount !== null ? o.amount : TICKET_PRICES[tkKey][0] * n;
   var p = attrParams();
   p.value = Math.round(value * 100) / 100;
   p.currency = o.currency;
