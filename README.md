@@ -41,6 +41,7 @@ Alternativ per CLI: `npx vercel --prod` im Projektordner.
 | `danke.html` | `PageView` | Advanced Matching: E-Mail, Vor- und Nachname aus Ablefy (vom Pixel gehasht) |
 | `danke.html` | `Purchase` | `value` (Ablefy-`price`), `currency`, `content_ids` (`vs26-basic` / `vs26-vip` / `vs26-lastminute`), `num_items`, `contents`, `order_id`, `payment_state`, `coupon`, UTMs |
 
+- **InitiateCheckout** feuert pro Browser-Sitzung und Ticket-Typ nur einmal (Session-Cookie `vs_ic`), Mehrfachklicks, weitere Tabs und Reloads zählen nicht doppelt. Zusätzlich hat jedes Event eine feste `eventID` (`ic_<Sitzung>_<Ticket>`), über die Meta Dubletten verwirft.
 - **UTMs:** Der Checkout läuft über Ablefy, darum merkt sich die Landingpage die `utm_*`-Parameter
   90 Tage in `localStorage` (`vs_attr`). Mit dem Purchase gehen die UTMs des letzten Besuchs
   (`utm_source` … `utm_id`, `landing_page`) und vom Erstkontakt `first_utm_source`, `first_utm_medium`,

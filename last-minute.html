@@ -2001,7 +2001,17 @@ function attrParams(){
   return p;
 }
 
-/* ---------- Meta Pixel: InitiateCheckout beim Klick auf einen Ticket-Button ---------- */
+/* ---------- Meta Pixel: InitiateCheckout beim Klick auf einen Ticket-Button ----------
+   Pro Browser-Sitzung und Ticket-Typ nur einmal: Mehrfachklicks (auch in anderen Tabs oder nach
+   Reload) zählen nicht doppelt. Gemerkt wird das in einem Session-Cookie "vs_ic", das beim Schließen
+   des Browsers verfällt. Dazu eine feste eventID je Sitzung und Ticket, über die Meta Dubletten verwirft. */
+function icSent(){ var m = document.cookie.match(/(?:^|;\s*)vs_ic=([^;]*)/); return m ? decodeURIComponent(m[1]).split(',') : []; }
+function icSid(){
+  var m = document.cookie.match(/(?:^|;\s*)vs_sid=([^;]*)/); if(m) return m[1];
+  var id = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  document.cookie = 'vs_sid=' + id + '; path=/; SameSite=Lax'; return id;
+}
+var icMem = {};
 document.querySelectorAll('a[href*="myablefy.com"]').forEach(function(a){
   a.addEventListener('click', function(){
     if(typeof fbq !== 'function') return;
@@ -2010,7 +2020,11 @@ document.querySelectorAll('a[href*="myablefy.com"]').forEach(function(a){
     p.content_name = 'Vending Summit 2026, Last-Minute-Ticket';
     p.content_type = 'product'; p.content_ids = ['vs26-lastminute']; p.num_items = 1;
     p.value = LM.price; p.currency = 'EUR'; p.offer = 'last-minute';
-    fbq('track', 'InitiateCheckout', p);
+    var key = p.content_ids[0], sent = icSent();
+    if(icMem[key] || sent.indexOf(key) > -1) return;
+    icMem[key] = true; sent.push(key);
+    document.cookie = 'vs_ic=' + encodeURIComponent(sent.join(',')) + '; path=/; SameSite=Lax';
+    fbq('track', 'InitiateCheckout', p, { eventID: 'ic_' + icSid() + '_' + key });
   });
 });
 
