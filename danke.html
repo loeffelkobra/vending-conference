@@ -435,6 +435,102 @@ a.tr-chip:hover{border-color:rgba(255,98,0,.35);background:var(--orange-soft);co
   .final-body{padding:0 20px 42px}
 }
 
+/* ===== Freunde-Aktion: Code SM50, 50 % für bis zu 4 Freunde ===== */
+#freunde{padding:0 0 96px;z-index:4}
+.ref{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:44px;align-items:center;
+  max-width:1020px;margin:0 auto;padding:52px 52px;border-radius:30px;color:#fff;
+  background:linear-gradient(160deg,#17110C 0%,#0F0C09 55%,#1F0E03 100%);
+  box-shadow:0 0 0 1px rgba(255,138,61,.2) inset,0 40px 90px -40px rgba(10,10,10,.65),0 18px 40px -26px rgba(255,98,0,.4)}
+.ref::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 80% at 100% 0%,rgba(255,98,0,.34),transparent 62%),radial-gradient(50% 60% at 0% 100%,rgba(255,138,61,.16),transparent 70%)}
+.ref::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(to right,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 30% 40%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse 70% 70% at 30% 40%,#000 10%,transparent 75%)}
+.ref .pill{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22);color:rgba(255,255,255,.92);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.ref .pill em{color:var(--orange-lt)}
+.ref h2{font-weight:700;font-size:clamp(30px,4.2vw,46px);line-height:1.02;letter-spacing:-.04em;margin:18px 0 14px}
+.ref h2 .it{color:var(--orange-lt)}
+.ref-sub{color:rgba(255,255,255,.7);font-size:16.5px;line-height:1.6;max-width:480px;text-wrap:pretty}
+.ref-sub strong{color:#fff;font-weight:600}
+.ref-prices{display:grid;gap:10px;margin-top:24px;max-width:460px}
+.ref-price{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 18px;border-radius:16px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.ref-price>span{font-size:14.5px;font-weight:600;color:rgba(255,255,255,.9)}
+.ref-price>span small{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.5);margin-top:1px}
+.ref-price .pr{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.ref-price s{font-size:14px;color:rgba(255,255,255,.42);text-decoration-color:rgba(255,138,61,.8);text-decoration-thickness:2px}
+.ref-price b{font-size:23px;font-weight:800;letter-spacing:-.03em;color:var(--orange-lt)}
+.ref-steps{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;padding:0;list-style:none;counter-reset:rs}
+.ref-steps li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,.66);counter-increment:rs}
+.ref-steps li::before{content:counter(rs);flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11.5px;font-weight:700;
+  color:#fff;background:rgba(255,98,0,.28);border:1px solid rgba(255,138,61,.5)}
+
+/* Gutschein-Karte */
+.ref-coupon{position:relative;padding:28px 26px 22px;border-radius:24px;color:var(--ink);background:var(--cream);
+  box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 30px 60px -24px rgba(0,0,0,.7),0 0 0 1px rgba(255,138,61,.35);
+  transform:rotate(1.2deg);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.ref:hover .ref-coupon{transform:rotate(0)}
+.ref-stamp{position:absolute;top:-22px;right:-16px;width:92px;height:92px;border-radius:50%;display:grid;place-items:center;text-align:center;
+  background:var(--grad-cta);color:#fff;font-weight:800;line-height:.9;transform:rotate(12deg);
+  box-shadow:0 0 0 6px rgba(255,98,0,.18),0 16px 30px -10px rgba(255,98,0,.8)}
+.ref-stamp b{display:block;font-size:30px;letter-spacing:-.04em}
+.ref-stamp small{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:4px;font-weight:700}
+.ref-kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange-dk)}
+.ref-code-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding:12px 12px 12px 20px;border-radius:16px;
+  background:#fff;border:2px dashed rgba(255,98,0,.55)}
+.ref-code{font-size:clamp(34px,4.4vw,44px);font-weight:800;letter-spacing:.08em;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.ref-copy{flex:none;display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border-radius:11px;border:0;cursor:pointer;
+  background:var(--ink);color:#fff;font-size:13px;font-weight:700;transition:background .25s,transform .2s}
+.ref-copy:hover{background:var(--orange-dk);transform:translateY(-1px)}
+.ref-copy svg{width:15px;height:15px}
+.ref-copy.ok{background:var(--green)}
+.ref-note{margin-top:10px;font-size:12.5px;color:var(--muted);line-height:1.5}
+.ref-perf{margin:20px -26px 18px;border-top:2px dashed rgba(10,10,10,.12);position:relative}
+.ref-perf::before,.ref-perf::after{content:'';position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:#140F0B}
+.ref-perf::before{left:-11px}.ref-perf::after{right:-11px}
+.ref-slots-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}
+.ref-slots-head b{font-size:15px;font-weight:700;letter-spacing:-.015em}
+.ref-slots-head span{font-size:13px;color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
+.ref-slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ref-slot{display:flex;flex-direction:column;align-items:center;gap:6px;padding:0;border:0;background:none;cursor:pointer;font-family:var(--sans)}
+.ref-slot .av{width:100%;max-width:58px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
+  border:1.5px dashed rgba(255,98,0,.45);background:#fff;color:var(--orange);transition:all .35s cubic-bezier(.34,1.56,.64,1)}
+.ref-slot .av svg{width:20px;height:20px}
+.ref-slot .av .ck2{display:none}
+.ref-slot:hover .av{border-style:solid;background:var(--orange-soft);transform:translateY(-2px)}
+.ref-slot small{font-size:11.5px;font-weight:600;color:var(--muted)}
+.ref-slot.on .av{border:0;background:var(--grad-cta);color:#fff;box-shadow:0 6px 16px -6px rgba(255,98,0,.7)}
+.ref-slot.on .av .plus{display:none}
+.ref-slot.on .av .ck2{display:block}
+.ref-slot.on small{color:var(--orange-dk)}
+.ref-slot:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:12px}
+.ref-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+.ref-acts .btn{padding:12px 14px;font-size:13.5px;border-radius:12px;white-space:nowrap}
+.ref-acts .btn .sm{display:none}
+.ref-acts .btn.wa{grid-column:1/-1;font-size:15px;padding:14px 18px}
+.ref-acts .btn svg.ic{width:16px;height:16px;flex:none}
+.ref-acts .btn.wa svg.ic{width:19px;height:19px}
+.ref-acts .btn.ghost{background:#fff}
+@media(max-width:900px){
+  .ref{grid-template-columns:1fr;gap:36px;padding:40px 26px 30px;border-radius:26px}
+  .ref-coupon{transform:none;max-width:460px;width:100%;margin:0 auto}
+}
+@media(max-width:640px){
+  #freunde{padding-bottom:68px}
+  .ref{padding:34px 18px 22px}
+  .ref-coupon{padding:24px 18px 18px}
+  .ref-perf{margin:18px -18px 16px}
+  .ref-code-row{padding:10px 10px 10px 16px}
+  .ref-stamp{width:76px;height:76px;top:-20px;right:-6px}
+  .ref-stamp b{font-size:25px}
+  .ref-price{padding:12px 14px}
+  .ref-price b{font-size:20px}
+  .ref-stamp small{font-size:8px}
+  .ref-acts .btn{padding:12px 10px;font-size:13px;gap:8px}
+  .ref-acts .btn .lg{display:none}
+  .ref-acts .btn .sm{display:inline}
+}
+
 /* ===== Footer ===== */
 .foot{position:relative;padding:64px 40px 40px;text-align:center;overflow:hidden;background:var(--ink);color:#fff}
 .foot::before{content:'';position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 100%,rgba(255,98,0,.35),transparent 70%);pointer-events:none}
@@ -581,6 +677,56 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- ===== FREUNDE-AKTION: Code SM50, 50 % Rabatt für bis zu 4 Freunde =====
+     Code und Prozentsatz stehen im Script unter "Freunde-Aktion" (REF). Der Gutschein muss in Ablefy
+     für beide Produkte (vending-summit, last-minute-tickets) angelegt sein. -->
+<section class="sec" id="freunde">
+  <div class="wrap">
+    <div class="ref fx">
+      <div class="ref-copy-col">
+        <div class="pill"><span class="pill-ico">🎁</span><span>Bring einen <em>Freund</em> mit</span></div>
+        <h2>Deine Freunde sparen <span class="it">50 Prozent.</span></h2>
+        <p class="ref-sub">Zusammen macht der Summit doppelt so viel Sinn. Lade <strong>bis zu 4 Freunde</strong>, Kollegen oder Geschäftspartner ein: Mit deinem Code <strong>SM50</strong> bekommen sie ihr Ticket <strong>zum halben Preis</strong>.</p>
+        <div class="ref-prices" id="refPrices">
+          <div class="ref-price"><span>Basic-Ticket<small>Konferenztag, Messe, Verpflegung</small></span><span class="pr"><s>149 €</s><b>74,50 €</b></span></div>
+          <div class="ref-price"><span>VIP-Ticket<small>plus Dinner, erste Reihen, Academy</small></span><span class="pr"><s>399 €</s><b>199,50 €</b></span></div>
+        </div>
+        <ol class="ref-steps">
+          <li>Code teilen</li>
+          <li>Freund gibt SM50 im Checkout ein</li>
+          <li>Gemeinsam nach Düpow</li>
+        </ol>
+      </div>
+
+      <div class="ref-coupon">
+        <div class="ref-stamp" aria-hidden="true"><div><b>-50%</b><small>für Freunde</small></div></div>
+        <span class="ref-kicker">Dein Freundes-Code</span>
+        <div class="ref-code-row">
+          <span class="ref-code" id="refCode">SM50</span>
+          <button class="ref-copy" id="refCopy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Kopieren</span></button>
+        </div>
+        <p class="ref-note" id="refNote">50 % auf den Ticketpreis, im Ablefy-Checkout ins Feld „Gutschein“ eingeben. Preise netto zzgl. MwSt.</p>
+
+        <div class="ref-perf" aria-hidden="true"></div>
+
+        <div class="ref-slots-head"><b>Wen nimmst du mit?</b><span id="refCnt">0 von 4 eingeladen</span></div>
+        <div class="ref-slots" id="refSlots">
+          <button class="ref-slot" type="button" data-slot="0"><span class="av"><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><small>Freund 1</small></button>
+          <button class="ref-slot" type="button" data-slot="1"><span class="av"><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><small>Freund 2</small></button>
+          <button class="ref-slot" type="button" data-slot="2"><span class="av"><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><small>Freund 3</small></button>
+          <button class="ref-slot" type="button" data-slot="3"><span class="av"><svg class="plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><small>Freund 4</small></button>
+        </div>
+
+        <div class="ref-acts">
+          <a class="btn wa" id="refWa" href="#" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.5c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .8-.3 1.5Z"/></svg><span class="lg">Freunde per WhatsApp einladen</span><span class="sm">Per WhatsApp einladen</span></a>
+          <a class="btn ghost" id="refMail" href="#"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>Per E-Mail</a>
+          <button class="btn ghost" id="refShare" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span>Link kopieren</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== NÄCHSTE SCHRITTE ===== -->
 <section class="sec sec-alt" id="weiter" style="padding-top:0">
   <div class="wrap">
@@ -635,7 +781,7 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
           <div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="tx">
             <b>Team mitbringen</b>
-            <span>Bis zu <strong>6 Tickets pro Bestellung</strong>. Wer aus deinem Netzwerk sollte dabei sein? Schick den Link weiter.</span>
+            <span>Wer aus deinem Netzwerk sollte dabei sein? Mit deinem Code <strong>SM50</strong> sparen bis zu 4 Freunde <strong>50 %</strong> auf ihr Ticket.</span>
             <div class="todo-act">
               <a class="btn ghost" id="waBtn" href="#" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.5c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .8-.3 1.5Z"/></svg>Per WhatsApp teilen</a>
               <button class="btn ghost" id="copyBtn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Link kopieren</span></button>
@@ -1060,10 +1206,64 @@ tick(); setInterval(tick,1000);
     '&location='+encodeURIComponent(loc)+'&details='+encodeURIComponent(desc);
 })();
 
+/* ---------- Freunde-Aktion: Code SM50 ----------
+   Käufer laden bis zu 4 Freunde ein, die mit dem Code 50 % auf ihr Ticket sparen.
+   Der Link führt auf die passende Event-Seite (Last-Minute-Käufer auf /last-minute) und trägt
+   UTMs (utm_source=danke, utm_medium=referral, utm_campaign=sm50), damit Freundes-Käufe im
+   Meta-Purchase und in Ablefy (coupon=SM50) auswertbar sind. Eingeladene Slots merkt sich die Seite. */
+var REF = { code: 'SM50', pct: 50, max: 4 };
+var REF_URL = location.origin + EVENT_PATH + '?utm_source=danke&utm_medium=referral&utm_campaign=sm50&utm_content=' + tkKey + '#tickets';
+var REF_MSG = 'Ich bin beim Vending Summit 2026 dabei, am 28. November in Düpow. Komm mit! ' +
+  'Mit meinem Code ' + REF.code + ' sparst du ' + REF.pct + ' % auf dein Ticket (einfach im Checkout eingeben): ' + REF_URL;
+(function(){
+  function eur(n){ return n.toLocaleString('de-DE',{minimumFractionDigits:n % 1 ? 2 : 0, maximumFractionDigits:2}) + ' €'; }
+  function priceRow(name, sub, full){
+    return '<div class="ref-price"><span>' + name + '<small>' + sub + '</small></span><span class="pr"><s>' + eur(full) +
+      '</s><b>' + eur(Math.round(full * (100 - REF.pct)) / 100) + '</b></span></div>';
+  }
+  /* Last-Minute-Käufer laden auf /last-minute ein, dort gibt es nur das 49-€-Ticket */
+  if(isLm) document.getElementById('refPrices').innerHTML =
+    priceRow('Last-Minute-Ticket', 'Konferenztag mit Bühne und Messe', TICKET_PRICES.lastminute[0]);
+
+  var KEY = 'vs_ref_invites', n = 0;
+  try{ n = Math.min(REF.max, parseInt(localStorage.getItem(KEY), 10) || 0); }catch(e){}
+  var slots = [].slice.call(document.querySelectorAll('.ref-slot')), cnt = document.getElementById('refCnt');
+  function render(){
+    slots.forEach(function(s, i){ var on = i < n; s.classList.toggle('on', on);
+      s.setAttribute('aria-label', 'Freund ' + (i + 1) + (on ? ' eingeladen' : ' einladen')); });
+    cnt.textContent = n + ' von ' + REF.max + ' eingeladen' + (n >= REF.max ? ' 🎉' : '');
+  }
+  function invited(){ if(n < REF.max){ n++; try{ localStorage.setItem(KEY, n); }catch(e){} render(); } }
+  render();
+
+  var wa = 'https://wa.me/?text=' + encodeURIComponent(REF_MSG);
+  var wb = document.getElementById('refWa');
+  wb.href = wa; wb.addEventListener('click', invited);
+  var mb = document.getElementById('refMail');
+  mb.href = 'mailto:?subject=' + encodeURIComponent('Komm mit zum Vending Summit 2026: ' + REF.pct + ' % mit meinem Code') +
+    '&body=' + encodeURIComponent('Hi,\n\n' + REF_MSG + '\n\nBis dann in Düpow!' + (firstName ? '\n' + firstName : ''));
+  mb.addEventListener('click', invited);
+  /* Slot antippen: Teilen-Menü des Handys, sonst WhatsApp */
+  slots.forEach(function(s){ s.addEventListener('click', function(){
+    if(navigator.share && matchMedia('(pointer:coarse)').matches){
+      navigator.share({ title: 'Vending Summit 2026', text: REF_MSG }).then(invited, function(){});
+    } else { window.open(wa, '_blank', 'noopener'); invited(); }
+  }); });
+
+  function copy(txt, btn, okTxt){
+    var lbl = btn.querySelector('span'), old = lbl.textContent;
+    function done(){ lbl.textContent = okTxt; btn.classList.add('ok'); setTimeout(function(){ lbl.textContent = old; btn.classList.remove('ok'); }, 1800); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ prompt('Kopieren:', txt); }); }
+    else prompt('Kopieren:', txt);
+  }
+  document.getElementById('refCopy').addEventListener('click', function(){ copy(REF.code, this, 'Kopiert!'); });
+  document.getElementById('refShare').addEventListener('click', function(){ copy(REF_MSG, this, 'Kopiert!'); invited(); });
+})();
+
 /* ---------- Teilen ---------- */
 (function(){
-  var url=location.origin + EVENT_PATH + '#tickets';
-  var msg='Ich bin beim Vending Summit 2026 dabei, 28. November in Düpow. Kommst du mit? ' + url;
+  var url=REF_URL;
+  var msg=REF_MSG;
   document.getElementById('waBtn').href='https://wa.me/?text='+encodeURIComponent(msg);
   var cp=document.getElementById('copyBtn'), lbl=cp.querySelector('span');
   cp.addEventListener('click',function(){

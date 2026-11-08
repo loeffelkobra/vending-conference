@@ -20,6 +20,12 @@ Alternativ per CLI: `npx vercel --prod` im Projektordner.
   `product`, `price`, `state`, `coupon` usw. aus der URL und zeigt nur vorhandene Daten an.
   Test: `/danke?product=VIP-Ticket&payer_first_name=Lukas&payer_email=l@firma.de&order_id=12345&price=399&state=successful&test=1`
   (`&test=1` verhindert, dass der Test als echter Kauf an Meta geht, siehe unten)
+  - **Freunde-Aktion „Bring einen Freund mit“** (direkt unter der Bestellkarte, für Basic, VIP und Last-Minute):
+    Käufer teilen den Code **SM50**, damit sparen bis zu 4 Freunde 50 % auf ihr Ticket. Teilen per WhatsApp,
+    E-Mail, Teilen-Menü am Handy oder Link kopieren; vier Freundes-Slots zählen die Einladungen mit (`localStorage` `vs_ref_invites`).
+    Last-Minute-Käufer laden auf `/last-minute` ein (49 € → 24,50 €), alle anderen auf die Startseite (Basic 74,50 €, VIP 199,50 €).
+    Der geteilte Link trägt `utm_source=danke&utm_medium=referral&utm_campaign=sm50`, Freundes-Käufe sind damit im Meta-Purchase auswertbar.
+    Code, Prozent und Anzahl stehen im Script unter `REF`. **Den Gutschein SM50 in Ablefy für beide Produkte anlegen.**
 - `last-minute.html` – Paid-Ads-Variante der Startseite unter `/last-minute`: nur ein Ticket
   (Last-Minute, 49 € netto statt 149 €), Hero mit „Die Automatenkonferenz des Jahres“, ohne VIP und
   ohne Aussteller-Anfrage, mit Sticky-Button auf dem Handy. Gepflegt wird sie als Kopie von `index.html`:
