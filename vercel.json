@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/last-minute", "destination": "/", "permanent": false },
+    { "source": "/last-minute.html", "destination": "/", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/(.*)",
