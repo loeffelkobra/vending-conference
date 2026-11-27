@@ -35,6 +35,12 @@ Alternativ per CLI: `npx vercel --prod` im Projektordner.
     alle übrigen Buttons springen zur Ticketkarte `#tickets`).
   - **Enddatum der Aktion (optional):** im Script `LM.offerEnd`, z. B. `'2026-11-16T23:59:59+01:00'`.
     Dann steht auf der Ticket-Karte und in der Sticky-Leiste „Preis gilt nur bis …“, sonst „Noch X Tage bis zum Summit“.
+- `2027.html` – Teaser-Seite für den Vending Summit 2027 unter `/2027` (Sa, 12.06.2027, Düpow). Kompakt: Hero, Insider-Ticket
+  (49 € statt 149 € netto, gedacht für den Verkauf auf dem Summit 2026), drei Kacheln, Abschluss, Sticky-Button auf dem Handy.
+  Checkout: `https://myablefy.com/s/spaetimat/vending-summit-2/payment` (UTM-Parameter der Seite werden angehängt).
+  Meta Pixel: `PageView` und `InitiateCheckout` mit `content_ids` `vs27-insider`, Wert 49, einmal pro Sitzung.
+  Bilder kommen aus `/email/img/`. **Achtung:** `danke.html` ist auf 2026 zugeschnitten (und würde einen 49-€-Kauf als
+  Last-Minute 2026 werten), darum beim Ablefy-Produkt `vending-summit-2` vorerst nicht `/danke` als Danke-Seite eintragen.
 - `vercel.json` – Clean URLs + Security-Header
 - `_source/` – ursprünglicher TextEdit-Export (wird nicht deployt)
 
