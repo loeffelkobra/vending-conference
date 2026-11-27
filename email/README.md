@@ -10,6 +10,8 @@ Zwei Varianten, gleicher Inhalt, gleiche Links und Merge-Tags:
 
 - `followup-2-story.html` bis `followup-5-deadline.html` – die vier Follow-up-Mails der Launch-Sequenz.
   Betreffzeilen, Preview-Texte und Versandplan stehen in `SEQUENZ.md`.
+- `reminder-morgen.html` – Erinnerung an alle Ticketkäufer am Vortag (27.11.), mit Freunde-Code **SM50** (50 % für bis zu 4 Begleitungen).
+  Betreff: „Morgen ist es so weit“, Preview-Text: „Morgen, 28.11. in Düpow: 250 Leute, eine Halle. Und mit Code SM50 bekommt deine Begleitung 50 % auf ihr Ticket.“
 
 Hinweis zur v2: Headline und Speaker im Hero sind als Bild gebaut (`img/v2/hero.jpg`), damit der Look in allen Mail-Clients
 identisch ist. Datum, Text, Buttons und alles darunter sind echter Text.
