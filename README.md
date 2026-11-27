@@ -42,6 +42,7 @@ Alternativ per CLI: `npx vercel --prod` im Projektordner.
     und alle Kauf-Buttons sind deaktiviert. Der Ablefy-Checkout selbst bleibt erreichbar: Produkt in Ablefy zum selben Zeitpunkt deaktivieren.
   - **Checkout Basic:** `https://myablefy.com/s/spaetimat/vending-summit-2/payment`. **VIP:** Link fehlt noch, alle Buttons mit
     Klasse `js-vip` zeigen bis dahin auf `#ticket`. UTM-Parameter der Seite werden an den Checkout angehängt.
+  - VIP-Leistungen wie auf der Hauptseite (Anrechnung 299 €, VIP-Dinner, Academy-Modul, erste Reihen, Präsentationen/Fotos). HEST wird auf der 2027-Seite nicht erwähnt.
   - Meta Pixel: `PageView` und `InitiateCheckout` (`vs27-basic` 49 € / `vs27-vip` 299 €), je Ticket einmal pro Sitzung.
   - **Achtung:** `danke.html` ist auf 2026 zugeschnitten (ein 49-€-Kauf würde als Last-Minute 2026 gewertet),
     darum bei den 2027-Produkten in Ablefy vorerst nicht `/danke` als Danke-Seite eintragen.

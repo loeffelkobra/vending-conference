@@ -142,6 +142,16 @@ h2 .serif{color:var(--orange)}
 @media(max-width:640px){.tk-visual{margin:-64px -10px 18px}}
 @media(prefers-reduced-motion:reduce){.tk-visual{transform:none !important}}
 
+
+/* ===== VIP-Extras ===== */
+.tk-card.vip > .tk-list{flex:none}
+.vip-extra{flex:1;margin-top:18px;padding:18px 18px 16px;border-radius:16px;background:linear-gradient(180deg,rgba(240,194,122,.10) 0%,rgba(240,194,122,.03) 100%);border:1px solid rgba(240,194,122,.28)}
+.vip-extra-h{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#F0C27A}
+.vip-list{list-style:none;margin-top:12px;display:grid;gap:11px}
+.vip-list li{display:flex;gap:11px;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.82)}
+.vip-list li b{color:#fff;font-weight:600}
+.vip-list svg{flex-shrink:0;margin-top:2px}
+
 /* ===== Countdown ===== */
 .cd{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:10px}
 .cd-lab{font-size:13px;font-weight:600;letter-spacing:.3px;color:var(--orange-lt)}
@@ -162,7 +172,7 @@ h2 .serif{color:var(--orange)}
 .tk-intro .lead{margin-left:auto;margin-right:auto}
 .tk-cards{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch;max-width:880px;margin-left:auto;margin-right:auto}
 .tk-cards .tk-card{display:flex;flex-direction:column}
-.tk-cards .tk-list{flex:1}
+.tk-cards .tk-list{flex:1;align-content:start}
 .tk-card.vip{background:#0F0D0B;border-color:#2A2622;color:#fff;box-shadow:0 30px 60px -28px rgba(255,98,0,.45)}
 .tk-card.vip::before{background:linear-gradient(180deg,#FFB26B 0%,#FF6200 100%)}
 .tk-card.vip .tk-for,.tk-card.vip .tk-tax,.tk-card.vip .tk-fine{color:rgba(255,255,255,.6)}
@@ -270,6 +280,7 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6200" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dein Platz am Samstag, 12. Juni 2027 in D&uuml;pow</li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6200" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alle Sessions auf der Hauptb&uuml;hne</li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6200" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Automatenmesse mit allen Ausstellern</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6200" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Networking mit Betreibern, Herstellern und H&auml;ndlern</li>
         </ul>
         <a class="btn block js-checkout" data-pos="card-basic" data-id="vs27-basic" data-value="49" href="https://myablefy.com/s/spaetimat/vending-summit-2/payment">Basic f&uuml;r 49&nbsp;&euro; sichern<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         <p class="tk-fine">Sicherer Checkout &uuml;ber Ablefy</p>
@@ -289,10 +300,17 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
         <div class="perf" aria-hidden="true"></div>
         <ul class="tk-list">
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alles aus dem Basic-Ticket</li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Exklusives VIP-Dinner am Abend mit dem Sp&auml;tiMat- und HEST-Team</li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sitzpl&auml;tze in den ersten Reihen</li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alle Pr&auml;sentationen und Fotos im Nachgang</li>
         </ul>
+        <div class="vip-extra">
+          <div class="vip-extra-h">Zus&auml;tzlich nur im VIP</div>
+          <ul class="vip-list">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="#F0C27A" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><span><b>Ticketpreis wird angerechnet:</b> Kaufst du bei uns einen Automaten, ziehen wir dir die 299&nbsp;&euro; vom Kaufpreis ab.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="#F0C27A" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><span><b>Exklusives VIP-Dinner:</b> Das beste Steakhouse kommt auf den Summit, mit dem Sp&auml;tiMat-Team und den Ausstellern.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="#F0C27A" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><span><b>1&times; exklusives VIP-Academy-Modul</b> inklusive</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="#F0C27A" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><span><b>Sitzpl&auml;tze in den ersten Reihen</b></span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="#F0C27A" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><span>Alle Pr&auml;sentationen und Fotos des Events im Nachgang</span></li>
+          </ul>
+        </div>
         <a class="btn block js-checkout js-vip" data-pos="card-vip" data-id="vs27-vip" data-value="299" href="#ticket">VIP f&uuml;r 299&nbsp;&euro; sichern<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         <p class="tk-fine">Sicherer Checkout &uuml;ber Ablefy</p>
       </div>
@@ -325,8 +343,6 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
   <div class="foot-logos">
     <span>Ein Event von</span>
     <img src="/email/img/v2/logo-spaetimat.png" width="30" height="30" alt="Sp&auml;tiMat">
-    <span class="sep"></span>
-    <img src="/email/img/v2/logo-hest.png" width="58" height="14" alt="HEST">
   </div>
   <div>&copy; 2026 Sp&auml;tiMat GmbH</div>
   <div class="foot-links">
