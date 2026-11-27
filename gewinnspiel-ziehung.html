@@ -4,77 +4,136 @@
 <title>Ziehung | Gewinnspiel Vending Summit</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0A0806">
+<meta name="theme-color" content="#FFFBF5">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0806;--card:#15110E;--line:rgba(255,255,255,.12);--muted:rgba(255,255,255,.6);--orange:#FF6200;--orange-dk:#E04500;--orange-lt:#FF8A3D;
+:root{--ink:#141210;--ink-soft:#3A3631;--muted:#6B665E;--bg:#FFFBF5;--card:#FFFFFF;--line:#E9E3D8;
+  --orange:#FF6200;--orange-dk:#D94800;--orange-lt:#FF8A3D;--orange-soft:#FFF1E6;
   --sans:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;--serif:'Instrument Serif',Georgia,serif;
   --grad:linear-gradient(135deg,#FF7A1F 0%,var(--orange) 45%,var(--orange-dk) 100%)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);background:var(--bg);color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;background-image:radial-gradient(100% 50% at 50% -10%,rgba(255,98,0,.25) 0%,rgba(255,98,0,0) 60%)}
-.serif{font-family:var(--serif);font-style:italic;font-weight:400}
-.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
-h1{font-size:clamp(30px,5vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
-h1 .serif{color:var(--orange-lt)}
-.sub{margin-top:6px;color:var(--muted)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border:0;border-radius:12px;background:var(--grad);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer}
-.btn.ghost{background:rgba(255,255,255,.08);border:1px solid var(--line)}
-.btn[disabled]{opacity:.5;cursor:default}
-.login{max-width:380px;margin:60px auto 0;padding:26px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
-.login input{margin-top:14px;width:100%;font:inherit;font-size:17px;font-weight:600;color:#fff;background:#0E0B09;border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;outline:none;letter-spacing:1px}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;
+  background-image:radial-gradient(100% 45% at 50% -8%,rgba(255,98,0,.14) 0%,rgba(255,98,0,0) 65%)}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.wrap{max-width:1240px;margin:0 auto;padding:24px 20px 60px}
+.head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.head img{width:150px;height:auto}
+h1{margin-top:18px;font-size:clamp(32px,5vw,50px);font-weight:800;letter-spacing:-.035em;line-height:1.02}
+h1 .serif{color:var(--orange)}
+.sub{margin-top:6px;color:var(--muted);font-size:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border:0;border-radius:14px;background:var(--grad);color:#fff;font:inherit;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 12px 24px -12px rgba(255,98,0,.6)}
+.btn.ghost{background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:none}
+.btn[disabled]{opacity:.45;cursor:default}
+.btn.xl{padding:18px 28px;font-size:20px;border-radius:16px}
+
+.login{max-width:420px;margin:50px auto 0;padding:28px;border-radius:22px;background:#fff;border:2px solid var(--line);box-shadow:0 20px 40px -28px rgba(20,18,16,.3)}
+.login b{font-size:18px}
+.login p{margin-top:4px;color:var(--muted);font-size:15px}
+.login input{margin-top:16px;width:100%;font:inherit;font-size:20px;font-weight:700;letter-spacing:1.5px;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px 16px;outline:none;text-transform:uppercase}
 .login input:focus{border-color:var(--orange)}
 .login .btn{margin-top:12px;width:100%}
-.msg{margin-top:12px;font-size:14px;color:#FFB4A8;min-height:20px}
-.bar{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.bar label{display:flex;gap:8px;align-items:center;font-size:14px;color:rgba(255,255,255,.8);margin-right:auto}
-.bar input{width:18px;height:18px;accent-color:var(--orange)}
-.grid{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.col{padding:22px;border-radius:22px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column}
-.col-by{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-lt)}
-.col h2{margin-top:2px;font-size:24px;font-weight:800;letter-spacing:-.02em}
-.count{margin-top:4px;color:var(--muted);font-size:14px}
-.count b{color:#fff}
-.stage{margin-top:16px;min-height:150px;border-radius:16px;background:#0E0B09;border:1px dashed rgba(255,255,255,.18);display:grid;place-items:center;text-align:center;padding:18px}
-.stage .ph{color:rgba(255,255,255,.4);font-size:14px}
-.stage .rolling{font-size:26px;font-weight:700;color:rgba(255,255,255,.75)}
-.stage .win-lab{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-lt)}
-.stage .win{margin-top:6px;font-size:clamp(28px,4vw,40px);line-height:1.1;font-weight:800;letter-spacing:-.02em}
-.stage .win-meta{margin-top:6px;font-size:13px;color:var(--muted)}
-.col .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-.col .actions .btn{flex:1}
-.drawn{margin-top:12px;font-size:13px;color:var(--muted)}
-.list{margin-top:16px;max-height:340px;overflow:auto;border-top:1px solid var(--line)}
-.list li{list-style:none;display:flex;justify-content:space-between;gap:10px;padding:8px 2px;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px}
-.list li span:last-child{color:var(--muted);white-space:nowrap}
-.list li.won{color:var(--orange-lt);font-weight:700}
-.ok{color:#6EE7A0}
-@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.msg{margin-top:12px;font-size:15px;color:#9A2A12;min-height:22px}
+
+.bar{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bar label{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--ink-soft);margin-right:auto}
+.bar input{width:20px;height:20px;accent-color:var(--orange)}
+
+.grid{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{padding:24px 22px 22px;border-radius:26px;background:#fff;border:2px solid var(--line);box-shadow:0 20px 50px -34px rgba(20,18,16,.35);display:flex;flex-direction:column;align-items:center;text-align:center}
+.p-by{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-dk)}
+.panel h2{margin-top:2px;font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.02em}
+.count{margin-top:4px;color:var(--muted);font-size:15px}
+.count b{color:var(--ink)}
+
+.wheel-box{position:relative;margin-top:18px;width:100%;max-width:470px;aspect-ratio:1}
+.wheel-box canvas{width:100%;height:100%;display:block;filter:drop-shadow(0 24px 30px rgba(120,50,0,.25))}
+.pointer{position:absolute;left:50%;top:-14px;width:46px;height:58px;margin-left:-23px;z-index:2;transform-origin:50% 20%;filter:drop-shadow(0 6px 8px rgba(0,0,0,.3))}
+.pointer.kick{animation:kick .12s ease-out}
+@keyframes kick{40%{transform:rotate(-14deg)}}
+.empty{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:16px}
+.empty[hidden]{display:none}
+
+.ticker{margin-top:16px;min-height:62px;width:100%;display:flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:16px;background:var(--orange-soft);font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.01em;color:var(--ink);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.ticker.idle{background:#F6F2EB;color:var(--muted);font-size:17px;font-weight:600}
+.ticker.win{background:var(--grad);color:#fff;animation:glow 1s ease-in-out 3}
+@keyframes glow{50%{box-shadow:0 0 0 10px rgba(255,98,0,.18)}}
+.panel .btn.xl{margin-top:16px;min-width:240px}
+.drawn{margin-top:14px;font-size:15px;color:var(--muted)}
+.drawn b{color:var(--ink)}
+.drawn a{color:var(--orange-dk);font-weight:600}
+
+.lists{margin-top:26px;padding:18px 22px;border-radius:20px;background:#fff;border:2px solid var(--line)}
+.lists summary{cursor:pointer;font-weight:700;font-size:16px}
+.lists-grid{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lists h3{font-size:15px;font-weight:700;color:var(--orange-dk)}
+.lists ul{margin-top:6px;list-style:none;max-height:360px;overflow:auto}
+.lists li{display:flex;justify-content:space-between;gap:10px;padding:7px 2px;border-bottom:1px solid #F1ECE3;font-size:15px}
+.lists li span:last-child{color:var(--muted);white-space:nowrap}
+.lists li.won{color:var(--orange-dk);font-weight:700}
+.ok{color:#1A8F3C;font-weight:700}
+.del{margin-left:10px;font:inherit;font-size:13px;font-weight:700;color:#9A2A12;background:#FFF0EC;border:1px solid #F5B8A8;border-radius:8px;padding:3px 9px;cursor:pointer}
+.del:hover{background:#FFE1D8}
+
+.stamp{margin-top:12px;font-size:14px;color:var(--muted)}
+
+/* Gewinner-Anzeige */
+.overlay{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(255,251,245,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.overlay.show{display:flex}
+.win-card{position:relative;max-width:760px;width:100%;padding:44px 30px 32px;border-radius:30px;background:#fff;border:3px solid var(--orange);box-shadow:0 40px 80px -30px rgba(255,98,0,.55);text-align:center;animation:rise .6s cubic-bezier(.2,1.3,.4,1)}
+@keyframes rise{from{transform:scale(.6);opacity:0}}
+.win-lab{font-size:15px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange-dk)}
+.win-prize{margin-top:6px;font-size:clamp(20px,2.8vw,28px);font-weight:700;color:var(--ink-soft)}
+.win-name{margin-top:14px;font-size:clamp(40px,7vw,80px);line-height:1.02;font-weight:800;letter-spacing:-.04em;color:var(--ink);word-break:break-word}
+.win-name .serif{color:var(--orange)}
+.win-actions{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+#confetti{position:fixed;inset:0;z-index:60;pointer-events:none}
+
+@media(max-width:900px){.grid,.lists-grid{grid-template-columns:1fr}}
 </style>
 </head><body>
 <main class="wrap">
+  <div class="head"><img src="/email/img/logo-black.png" width="150" height="36" alt="Vending Summit"><button class="btn ghost" id="fs" type="button" hidden>Vollbild</button></div>
   <h1>Gewinnspiel-<span class="serif">Ziehung</span></h1>
   <p class="sub">Vending Summit &middot; 28.11.2026 &middot; Teilnahmeschluss 18:00 Uhr</p>
 
   <form class="login" id="login">
     <b>Zugang f&uuml;rs Team</b>
-    <input id="pin" type="password" autocomplete="current-password" placeholder="Passwort" required>
+    <p>Passwort eingeben (Gro&szlig;-/Kleinschreibung und Bindestriche egal).</p>
+    <input id="pin" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="VS26-…" required>
     <button class="btn" type="submit">Liste laden</button>
     <p class="msg" id="msg"></p>
   </form>
 
   <section id="app" hidden>
     <div class="bar">
-      <label><input type="checkbox" id="onlyOk"> Nur Teilnahmen mit best&auml;tigten Teilnahmebedingungen ziehen</label>
+      <label><input type="checkbox" id="onlyOk"> Nur Teilnahmen mit best&auml;tigten Teilnahmebedingungen</label>
+      <button class="btn ghost" id="sound" type="button">&#128266; Ton an</button>
       <button class="btn ghost" id="reload" type="button">Aktualisieren</button>
-      <button class="btn ghost" id="csv" type="button">CSV herunterladen</button>
+      <button class="btn ghost" id="csv" type="button">CSV</button>
+      <button class="btn ghost" id="wipe" type="button" style="color:#9A2A12">Alle l&ouml;schen</button>
     </div>
     <div class="grid" id="grid"></div>
-    <p class="sub" id="stamp" style="margin-top:14px;font-size:13px"></p>
+    <details class="lists" id="lists"><summary>Teilnahmen anzeigen und einzeln l&ouml;schen</summary><div class="lists-grid" id="listsGrid"></div></details>
+    <p class="stamp" id="stamp"></p>
   </section>
 </main>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-live="assertive">
+  <div class="win-card">
+    <div class="win-lab">&#127881; Gewinner</div>
+    <div class="win-prize" id="winPrize"></div>
+    <div class="win-name" id="winName"></div>
+    <div class="win-actions">
+      <button class="btn ghost xl" type="button" id="winClose">Schlie&szlig;en</button>
+      <button class="btn xl" type="button" id="winAgain">Neu drehen (ohne diesen Namen)</button>
+    </div>
+  </div>
+</div>
+<canvas id="confetti"></canvas>
+
 <script>
 (function(){
   var SB_URL = 'https://daspejznvrhkayrapqsl.supabase.co';
@@ -83,13 +142,21 @@ h1 .serif{color:var(--orange-lt)}
     {id:'erstbefuellung', by:'Snaxpress24', name:'1.000 € Erstbefüllung'},
     {id:'ps5', by:'Black-Friday-Deal von SpätiMat', name:'PlayStation 5'}
   ];
-  var rows = [], drawn = {erstbefuellung:[], ps5:[]}, pin = '';
+  var COLORS = [['#FF6200','#fff'],['#FFE3CC','#141210'],['#D94800','#fff'],['#FFF6EE','#141210']];
+  var TAU = Math.PI * 2;
+  var rows = [], pin = '', drawn = {erstbefuellung:[], ps5:[]}, wheels = {}, spinning = false, sound = true, audio = null, lastWin = null;
   try{ pin = sessionStorage.getItem('vs_pin') || ''; drawn = JSON.parse(sessionStorage.getItem('vs_drawn') || 'null') || drawn; }catch(e){}
 
   var $ = function(id){ return document.getElementById(id); };
   var esc = function(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
   var time = function(t){ return new Date(t).toLocaleTimeString('de-DE',{timeZone:'Europe/Berlin',hour:'2-digit',minute:'2-digit'}); };
+  var saveDrawn = function(){ try{ sessionStorage.setItem('vs_drawn', JSON.stringify(drawn)); }catch(e){} };
 
+  // ---------- echter Zufall (gleichverteilt) ----------
+  function rnd(n){ var a = new Uint32Array(1), lim = Math.floor(4294967296 / n) * n, x; do { crypto.getRandomValues(a); x = a[0]; } while(x >= lim); return x % n; }
+  function rndFloat(){ var a = new Uint32Array(1); crypto.getRandomValues(a); return a[0] / 4294967296; }
+
+  // ---------- Daten ----------
   function load(){
     $('msg').textContent = '';
     return fetch(SB_URL + '/rest/v1/rpc/gewinnspiel_liste', {
@@ -97,68 +164,213 @@ h1 .serif{color:var(--orange-lt)}
       body: JSON.stringify({p_pin:pin})
     }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
     .then(function(res){
-      if(!res.ok){ $('msg').textContent = res.j && res.j.message === 'forbidden' ? 'Falsches Passwort.' : 'Laden fehlgeschlagen.'; $('login').hidden = false; $('app').hidden = true; return; }
+      if(!res.ok){
+        $('msg').textContent = res.j && res.j.message === 'forbidden' ? 'Das Passwort stimmt nicht.' : 'Laden fehlgeschlagen. Bitte nochmal versuchen.';
+        try{ sessionStorage.removeItem('vs_pin'); }catch(e){}
+        $('login').hidden = false; $('app').hidden = true; return;
+      }
       try{ sessionStorage.setItem('vs_pin', pin); }catch(e){}
-      rows = res.j; $('login').hidden = true; $('app').hidden = false; render();
+      rows = res.j; $('login').hidden = true; $('app').hidden = false; $('fs').hidden = !document.documentElement.requestFullscreen;
+      build();
       $('stamp').textContent = 'Stand: ' + new Date().toLocaleTimeString('de-DE',{timeZone:'Europe/Berlin'}) + ' Uhr · ' + rows.length + ' Einträge gesamt';
     }).catch(function(){ $('msg').textContent = 'Keine Verbindung.'; });
   }
-
   function pool(g){
     var only = $('onlyOk').checked;
-    return rows.filter(function(r){ return r.gewinnspiel === g && (!only || r.bedingungen_bestaetigt) && drawn[g].indexOf(r.name) < 0; });
+    return rows.filter(function(r){ return r.gewinnspiel === g && (!only || r.bedingungen_bestaetigt) && drawn[g].indexOf(r.name) < 0; }).map(function(r){ return r.name; });
   }
 
-  function render(){
+  // ---------- Aufbau ----------
+  function build(){
     $('grid').innerHTML = GAMES.map(function(g){
       var all = rows.filter(function(r){ return r.gewinnspiel === g.id; });
-      var last = drawn[g.id][drawn[g.id].length - 1];
-      var stage = last
-        ? '<div><div class="win-lab">' + (drawn[g.id].length > 1 ? drawn[g.id].length + '. Ziehung' : 'Gewinner') + '</div><div class="win">' + esc(last) + '</div></div>'
-        : '<div class="ph">Noch nicht gezogen</div>';
-      return '<div class="col" data-g="' + g.id + '">' +
-        '<div class="col-by">' + esc(g.by) + '</div><h2>' + esc(g.name) + '</h2>' +
+      return '<div class="panel" data-g="' + g.id + '">' +
+        '<div class="p-by">' + esc(g.by) + '</div><h2>' + esc(g.name) + '</h2>' +
         '<div class="count"><b>' + all.length + '</b> Teilnahmen · ' + all.filter(function(r){ return r.bedingungen_bestaetigt; }).length + ' mit bestätigten Bedingungen</div>' +
-        '<div class="stage" id="stage-' + g.id + '">' + stage + '</div>' +
-        '<div class="actions"><button class="btn" data-draw="' + g.id + '"' + (all.length ? '' : ' disabled') + '>' + (last ? 'Neu ziehen (ohne bisherige)' : 'Gewinner ziehen') + '</button></div>' +
-        (drawn[g.id].length ? '<p class="drawn">Bereits gezogen: ' + drawn[g.id].map(esc).join(', ') + ' <a href="#" data-reset="' + g.id + '" style="color:var(--orange-lt)">zurücksetzen</a></p>' : '') +
-        '<ul class="list">' + all.map(function(r){
-          return '<li class="' + (drawn[g.id].indexOf(r.name) >= 0 ? 'won' : '') + '"><span>' + esc(r.name) + (r.bedingungen_bestaetigt ? ' <span class="ok">✓</span>' : '') + '</span><span>' + time(r.created_at) + '</span></li>';
-        }).join('') + '</ul></div>';
+        '<div class="wheel-box"><svg class="pointer" id="ptr-' + g.id + '" viewBox="0 0 46 58" aria-hidden="true"><path d="M23 56 L4 14 A20 20 0 1 1 42 14 Z" fill="#141210"/><circle cx="23" cy="20" r="7" fill="#FF6200"/></svg><canvas id="cv-' + g.id + '"></canvas><div class="empty" id="empty-' + g.id + '" hidden>Noch keine Teilnahmen</div></div>' +
+        '<div class="ticker idle" id="tk-' + g.id + '">Bereit zum Drehen</div>' +
+        '<button class="btn xl" type="button" data-spin="' + g.id + '">Rad drehen</button>' +
+        '<div class="drawn" id="dr-' + g.id + '"></div></div>';
+    }).join('');
+    GAMES.forEach(function(g){
+      var w = wheels[g.id] || {rot: 0};
+      w.cv = $('cv-' + g.id); w.names = pool(g.id); wheels[g.id] = w;
+      sizeCanvas(w); draw(g.id); updateMeta(g.id);
+    });
+    $('listsGrid').innerHTML = GAMES.map(function(g){
+      var all = rows.filter(function(r){ return r.gewinnspiel === g.id; });
+      return '<div><h3>' + esc(g.name) + ' (' + all.length + ')</h3><ul>' + all.map(function(r){
+        return '<li class="' + (drawn[g.id].indexOf(r.name) >= 0 ? 'won' : '') + '"><span>' + esc(r.name) + (r.bedingungen_bestaetigt ? ' <span class="ok">✓</span>' : '') + '</span><span>' + time(r.created_at) + ' <button class="del" type="button" data-del="' + g.id + '" data-name="' + esc(r.name) + '" title="Eintrag löschen">Löschen</button></span></li>';
+      }).join('') + '</ul></div>';
     }).join('');
   }
-
-  function rnd(n){ var a = new Uint32Array(1), lim = Math.floor(4294967296 / n) * n, x; do { crypto.getRandomValues(a); x = a[0]; } while(x >= lim); return x % n; }
-
-  function draw(g){
-    var p = pool(g);
-    if(!p.length){ alert('Keine (weiteren) Teilnahmen für dieses Gewinnspiel.'); return; }
-    var winner = p[rnd(p.length)].name, stage = $('stage-' + g), btn = document.querySelector('[data-draw="' + g + '"]'), i = 0;
-    btn.disabled = true;
-    var iv = setInterval(function(){
-      stage.innerHTML = '<div class="rolling">' + esc(p[rnd(p.length)].name) + '</div>';
-      if(++i > 24){ clearInterval(iv);
-        drawn[g].push(winner);
-        try{ sessionStorage.setItem('vs_drawn', JSON.stringify(drawn)); }catch(e){}
-        render();
-      }
-    }, 90);
+  function updateMeta(g){
+    var w = wheels[g], btn = document.querySelector('[data-spin="' + g + '"]');
+    btn.disabled = spinning || !w.names.length;
+    btn.textContent = drawn[g].length ? 'Nochmal drehen' : 'Rad drehen';
+    $('empty-' + g).hidden = !!w.names.length;
+    $('dr-' + g).innerHTML = drawn[g].length ? 'Bereits gezogen: <b>' + drawn[g].map(esc).join(', ') + '</b> · <a href="#" data-reset="' + g + '">zurücksetzen</a>' : '';
+  }
+  function sizeCanvas(w){
+    var r = w.cv.getBoundingClientRect(), d = window.devicePixelRatio || 1, s = Math.max(200, Math.round(r.width));
+    w.cv.width = s * d; w.cv.height = s * d; w.size = s; w.dpr = d;
   }
 
+  // ---------- Rad zeichnen ----------
+  function draw(g, lights){
+    var w = wheels[g], c = w.cv.getContext('2d'), s = w.size, R = s / 2, n = w.names.length;
+    c.setTransform(w.dpr, 0, 0, w.dpr, 0, 0); c.clearRect(0, 0, s, s);
+    c.save(); c.translate(R, R);
+    // Rand
+    c.beginPath(); c.arc(0, 0, R - 2, 0, TAU); c.fillStyle = '#141210'; c.fill();
+    var inner = R - 18;
+    c.save(); c.rotate(w.rot);
+    if(!n){ c.beginPath(); c.arc(0, 0, inner, 0, TAU); c.fillStyle = '#F6F2EB'; c.fill(); }
+    var seg = TAU / Math.max(n, 1);
+    var fs = Math.min(22, Math.max(0, seg * inner * 0.5)), showLabels = n && fs >= 10;
+    for(var i = 0; i < n; i++){
+      var col = COLORS[(n % 4 === 1 && i === n - 1 && n > 1) ? 1 : i % 4];
+      var a0 = -Math.PI / 2 + i * seg, a1 = a0 + seg;
+      c.beginPath(); c.moveTo(0, 0); c.arc(0, 0, inner, a0, a1); c.closePath();
+      c.fillStyle = col[0]; c.fill();
+      if(n > 1){ c.strokeStyle = 'rgba(20,18,16,.12)'; c.lineWidth = 1; c.stroke(); }
+      if(showLabels){
+        c.save(); c.rotate(a0 + seg / 2);
+        c.fillStyle = col[1]; c.font = '700 ' + fs + 'px Geist, Helvetica, Arial, sans-serif'; c.textAlign = 'right'; c.textBaseline = 'middle';
+        var t = w.names[i], max = inner * 0.66;
+        while(c.measureText(t).width > max && t.length > 2) t = t.slice(0, -2) + '…';
+        c.fillText(t, inner - 14, 0); c.restore();
+      }
+    }
+    c.restore();
+    // Lichter
+    var bulbs = 28;
+    for(var b = 0; b < bulbs; b++){
+      var ang = b / bulbs * TAU, on = lights ? ((b + lights) % 2 === 0) : (b % 2 === 0);
+      c.beginPath(); c.arc(Math.cos(ang) * (R - 10), Math.sin(ang) * (R - 10), 3.6, 0, TAU);
+      c.fillStyle = on ? '#FFD2A8' : '#FF6200'; c.shadowColor = on ? '#FFB066' : 'transparent'; c.shadowBlur = on ? 10 : 0; c.fill();
+    }
+    c.shadowBlur = 0;
+    // Nabe
+    c.beginPath(); c.arc(0, 0, R * 0.17, 0, TAU); c.fillStyle = '#fff'; c.fill(); c.lineWidth = 5; c.strokeStyle = '#FF6200'; c.stroke();
+    c.fillStyle = '#141210'; c.font = '800 ' + Math.round(R * 0.11) + 'px Geist, Helvetica, Arial, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillText('VS', 0, 1);
+    c.restore();
+  }
+  function indexAt(w){ var n = w.names.length, seg = TAU / n, a = ((-w.rot) % TAU + TAU) % TAU; return Math.floor(a / seg) % n; }
+
+  // ---------- Ton ----------
+  function tick(){
+    if(!sound) return;
+    try{
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      var o = audio.createOscillator(), gn = audio.createGain(), t = audio.currentTime;
+      o.type = 'square'; o.frequency.value = 1500; gn.gain.setValueAtTime(0.06, t); gn.gain.exponentialRampToValueAtTime(0.0001, t + 0.04);
+      o.connect(gn); gn.connect(audio.destination); o.start(t); o.stop(t + 0.05);
+    }catch(e){}
+  }
+  function fanfare(){
+    if(!sound || !audio) return;
+    [523, 659, 784, 1047].forEach(function(f, i){
+      var o = audio.createOscillator(), gn = audio.createGain(), t = audio.currentTime + i * 0.13;
+      o.type = 'triangle'; o.frequency.value = f; gn.gain.setValueAtTime(0.0001, t); gn.gain.exponentialRampToValueAtTime(0.18, t + 0.03); gn.gain.exponentialRampToValueAtTime(0.0001, t + (i === 3 ? 0.9 : 0.25));
+      o.connect(gn); gn.connect(audio.destination); o.start(t); o.stop(t + 1);
+    });
+  }
+
+  // ---------- Drehen ----------
+  function spin(g){
+    var w = wheels[g]; w.names = pool(g); draw(g);
+    if(spinning || !w.names.length) return;
+    spinning = true; GAMES.forEach(function(x){ updateMeta(x.id); });
+    tick(); // Audio im Klick freischalten
+    var n = w.names.length, seg = TAU / n;
+    var win = rnd(n);                                   // Gewinner steht vorher fest, rein zufällig
+    var u = 0.12 + rndFloat() * 0.76;                   // zufällige Stelle innerhalb des Segments
+    var target = ((TAU - (win + u) * seg) % TAU + TAU) % TAU;
+    var cur = ((w.rot % TAU) + TAU) % TAU;
+    var delta = ((target - cur) % TAU + TAU) % TAU;
+    var turns = 7 + rnd(3);
+    var start = w.rot, total = turns * TAU + delta, dur = 8500 + rnd(1500), t0 = performance.now();
+    var lastIdx = indexAt(w), tk = $('tk-' + g), ptr = $('ptr-' + g), frame = 0;
+    tk.className = 'ticker';
+    function step(now){
+      var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+      w.rot = start + total * e; frame++;
+      draw(g, Math.floor(frame / 4));
+      var idx = indexAt(w);
+      if(idx !== lastIdx){ lastIdx = idx; tick(); ptr.classList.remove('kick'); void ptr.getBoundingClientRect(); ptr.classList.add('kick'); tk.textContent = w.names[idx]; }
+      if(p < 1){ requestAnimationFrame(step); return; }
+      var name = w.names[win];
+      tk.textContent = name; tk.className = 'ticker win'; tk.dataset.pointer = w.names[indexAt(w)];
+      drawn[g].push(name); saveDrawn(); spinning = false; lastWin = g;
+      setTimeout(function(){ showWinner(g, name); }, 450);
+      GAMES.forEach(function(x){ updateMeta(x.id); });
+    }
+    requestAnimationFrame(step);
+  }
+
+  function showWinner(g, name){
+    var game = GAMES.filter(function(x){ return x.id === g; })[0];
+    $('winPrize').textContent = game.name;
+    $('winName').textContent = name;
+    $('overlay').classList.add('show'); fanfare(); confetti();
+  }
+  function closeWinner(){ $('overlay').classList.remove('show'); build(); }
+
+  // ---------- Konfetti ----------
+  function confetti(){
+    var cv = $('confetti'), c = cv.getContext('2d'), d = window.devicePixelRatio || 1;
+    cv.width = innerWidth * d; cv.height = innerHeight * d; c.setTransform(d, 0, 0, d, 0, 0);
+    var cols = ['#FF6200','#FF8A3D','#FFC08A','#141210','#1A8F3C','#FFD84D'], ps = [];
+    for(var i = 0; i < 220; i++) ps.push({x: innerWidth / 2 + (rndFloat() - .5) * 200, y: innerHeight * .35, vx: (rndFloat() - .5) * 18, vy: -rndFloat() * 16 - 6, s: 6 + rndFloat() * 8, r: rndFloat() * TAU, vr: (rndFloat() - .5) * .4, c: cols[i % cols.length]});
+    var t0 = performance.now();
+    (function f(now){
+      var el = now - t0; c.clearRect(0, 0, innerWidth, innerHeight);
+      ps.forEach(function(p){ p.vy += .38; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+        c.save(); c.translate(p.x, p.y); c.rotate(p.r); c.globalAlpha = Math.max(0, 1 - el / 4200); c.fillStyle = p.c; c.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); c.restore(); });
+      if(el < 4200) requestAnimationFrame(f); else c.clearRect(0, 0, innerWidth, innerHeight);
+    })(t0);
+  }
+
+
+  // ---------- Löschen ----------
+  function rpc(fn, body){
+    return fetch(SB_URL + '/rest/v1/rpc/' + fn, {method:'POST', headers:{'apikey':SB_KEY,'Authorization':'Bearer ' + SB_KEY,'Content-Type':'application/json'}, body: JSON.stringify(body)})
+      .then(function(r){ return r.json().then(function(j){ if(!r.ok) throw new Error(j && j.message || 'fehler'); return j; }); });
+  }
+  function delOne(g, name){
+    var game = GAMES.filter(function(x){ return x.id === g; })[0];
+    if(spinning || !confirm('„' + name + '“ aus „' + game.name + '“ löschen?')) return;
+    rpc('gewinnspiel_loeschen', {p_pin:pin, p_gewinnspiel:g, p_name:name}).then(function(){
+      drawn[g] = drawn[g].filter(function(n){ return n !== name; }); saveDrawn();
+      var open = $('lists').open; return load().then(function(){ $('lists').open = open; });
+    }).catch(function(){ alert('Löschen hat nicht geklappt. Bitte nochmal versuchen.'); });
+  }
+  function wipe(){
+    if(spinning) return;
+    var t = prompt('Wirklich ALLE Teilnahmen beider Gewinnspiele löschen (z. B. nach einem Probelauf)?\nZum Bestätigen LÖSCHEN eintippen:');
+    if(t === null) return;
+    rpc('gewinnspiel_alle_loeschen', {p_pin:pin, p_bestaetigung:t.trim()}).then(function(n){
+      drawn = {erstbefuellung:[], ps5:[]}; saveDrawn(); alert(n + ' Einträge gelöscht.'); load();
+    }).catch(function(e){ alert(e.message === 'confirm' ? 'Nicht gelöscht: Bitte genau LÖSCHEN eintippen.' : 'Löschen hat nicht geklappt.'); });
+  }
+
+  // ---------- Bedienung ----------
   document.addEventListener('click', function(e){
-    var d = e.target.closest('[data-draw]'); if(d){ draw(d.dataset.draw); return; }
-    var r = e.target.closest('[data-reset]'); if(r){ e.preventDefault(); if(confirm('Ziehungen für dieses Gewinnspiel zurücksetzen?')){ drawn[r.dataset.reset] = []; try{ sessionStorage.setItem('vs_drawn', JSON.stringify(drawn)); }catch(x){} render(); } }
+    var s = e.target.closest('[data-spin]'); if(s){ spin(s.dataset.spin); return; }
+    var d = e.target.closest('[data-del]'); if(d){ delOne(d.dataset.del, d.dataset.name); return; }
+    var r = e.target.closest('[data-reset]'); if(r){ e.preventDefault(); if(!spinning && confirm('Ziehungen für dieses Gewinnspiel zurücksetzen?')){ drawn[r.dataset.reset] = []; saveDrawn(); build(); } }
   });
+  $('winClose').addEventListener('click', closeWinner);
+  $('wipe').addEventListener('click', wipe);
+  $('winAgain').addEventListener('click', function(){ var g = lastWin; closeWinner(); if(g) setTimeout(function(){ spin(g); }, 250); });
   $('login').addEventListener('submit', function(e){ e.preventDefault(); pin = $('pin').value.trim(); load(); });
-  $('reload').addEventListener('click', load);
-  $('onlyOk').addEventListener('change', render);
-  $('csv').addEventListener('click', function(){
-    var csv = 'gewinnspiel;name;bedingungen_bestaetigt;zeitpunkt\n' + rows.map(function(r){
-      return [r.gewinnspiel, '"' + String(r.name).replace(/"/g,'""') + '"', r.bedingungen_bestaetigt ? 'ja' : 'nein', new Date(r.created_at).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})].join(';');
-    }).join('\n');
-    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + csv], {type:'text/csv;charset=utf-8'}));
-    a.download = 'gewinnspiel-vending-summit-2026.csv'; a.click();
-  });
+  $('reload').addEventListener('click', function(){ if(!spinning) load(); });
+  $('onlyOk').addEventListener('change', function(){ if(!spinning) build(); });
+  $('sound').addEventListener('click', function(){ sound = !sound; this.innerHTML = sound ? '&#128266; Ton an' : '&#128263; Ton aus'; });
+  $('fs').addEventListener('click', function(){ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen(); });
+  addEventListener('resize', function(){ GAMES.forEach(function(g){ if(wheels[g.id] && wheels[g.id].cv){ sizeCanvas(wheels[g.id]); draw(g.id); } }); });
   if(pin) load();
 })();
 </script>
