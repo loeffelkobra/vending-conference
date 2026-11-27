@@ -35,13 +35,14 @@ Alternativ per CLI: `npx vercel --prod` im Projektordner.
     alle übrigen Buttons springen zur Ticketkarte `#tickets`).
   - **Enddatum der Aktion (optional):** im Script `LM.offerEnd`, z. B. `'2026-11-16T23:59:59+01:00'`.
     Dann steht auf der Ticket-Karte und in der Sticky-Leiste „Preis gilt nur bis …“, sonst „Noch X Tage bis zum Summit“.
-- `2027.html` – Teaser-Seite für den Vending Summit 2027 unter `/2027` (Sa, 12.06.2027, Düpow). Kompakt: Hero mit Countdown,
-  zwei Tickets (Insider 49 € statt 149 €, VIP 299 € statt 499 €, netto), drei Kacheln, Abschluss, Sticky-Leiste auf dem Handy.
+- `2027.html` – Teaser-Seite für den Vending Summit 2027 unter `/2027` (Sa, 12.06.2027, Düpow). Kompakt: Hero mit Countdown (Button scrollt zu den Tickets),
+  zwei Tickets zum Insider-Preis (Basic 49 € statt 149 €, VIP 299 € statt 499 €, netto) mit den Ticket-Grafiken
+  `img/ticket-basic-2027.webp` und `img/ticket-vip-2027.webp` (aus den 2026-Grafiken: VS2027 und 12.06.2027 eingesetzt), drei Kacheln, Abschluss, Sticky-Leiste auf dem Handy.
   - **Countdown/Angebotsende:** `DEADLINE` im Script (`2026-11-28T23:59:59+01:00`). Danach zeigt die Seite „Angebot beendet“
     und alle Kauf-Buttons sind deaktiviert. Der Ablefy-Checkout selbst bleibt erreichbar: Produkt in Ablefy zum selben Zeitpunkt deaktivieren.
-  - **Checkout Insider:** `https://myablefy.com/s/spaetimat/vending-summit-2/payment`. **VIP:** Link fehlt noch, alle Buttons mit
+  - **Checkout Basic:** `https://myablefy.com/s/spaetimat/vending-summit-2/payment`. **VIP:** Link fehlt noch, alle Buttons mit
     Klasse `js-vip` zeigen bis dahin auf `#ticket`. UTM-Parameter der Seite werden an den Checkout angehängt.
-  - Meta Pixel: `PageView` und `InitiateCheckout` (`vs27-insider` 49 € / `vs27-vip` 299 €), je Ticket einmal pro Sitzung.
+  - Meta Pixel: `PageView` und `InitiateCheckout` (`vs27-basic` 49 € / `vs27-vip` 299 €), je Ticket einmal pro Sitzung.
   - **Achtung:** `danke.html` ist auf 2026 zugeschnitten (ein 49-€-Kauf würde als Last-Minute 2026 gewertet),
     darum bei den 2027-Produkten in Ablefy vorerst nicht `/danke` als Danke-Seite eintragen.
 - `vercel.json` – Clean URLs + Security-Header

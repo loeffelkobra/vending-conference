@@ -2,15 +2,16 @@
 <html lang="de"><head>
 <meta charset="utf-8">
 <title>Vending Summit 2027 | SpätiMat</title>
-<meta name="description" content="Vending Summit 2027 am Samstag, 12. Juni 2027 in Düpow. Insider-Ticket für 49 € statt 149 €, VIP für 299 € statt 499 €.">
+<meta name="description" content="Vending Summit 2027 am Samstag, 12. Juni 2027 in Düpow. Insider-Preis: Basic für 49 € statt 149 €, VIP für 299 € statt 499 €.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0A0806">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SpätiMat">
 <meta property="og:title" content="Vending Summit 2027 | 12. Juni 2027 in Düpow">
-<meta property="og:description" content="Die Automatenkonferenz geht in die nächste Runde. Insider-Ticket für 49 € statt 149 €, VIP für 299 € statt 499 €.">
+<meta property="og:description" content="Die Automatenkonferenz geht in die nächste Runde. Insider-Preis: Basic für 49 € statt 149 €, VIP für 299 € statt 499 €.">
 <meta property="og:image" content="https://summit.spaetimat.com/email/img/hero.jpg">
+<link rel="preload" as="image" href="/img/ticket-basic-2027.webp">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -126,6 +127,21 @@ h2 .serif{color:var(--orange)}
 
 
 
+
+/* ===== Ticket-Grafiken ===== */
+.ticket-sec .tk-cards{margin-top:128px;gap:28px}
+.tk-card{overflow:visible}
+.tk-cards .tk-card::before{display:none}
+.tk-visual{margin:-74px -22px 22px;transform:rotate(-2deg);transition:transform .35s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 22px 30px rgba(10,10,10,.35)) drop-shadow(0 0 22px rgba(255,98,0,.22))}
+.tk-card.vip .tk-visual{transform:rotate(2deg);filter:drop-shadow(0 22px 34px rgba(0,0,0,.6)) drop-shadow(0 0 26px rgba(212,160,60,.32))}
+.tk-card:hover .tk-visual{transform:rotate(0) scale(1.03)}
+.tk-visual img{width:100%;height:auto}
+.tk-card .perf::before,.tk-card .perf::after{background:var(--bg-tint)}
+.hero-note b{color:#fff;font-weight:700}
+@media(max-width:860px){.ticket-sec .tk-cards{gap:100px;margin-top:104px}}
+@media(max-width:640px){.tk-visual{margin:-64px -10px 18px}}
+@media(prefers-reduced-motion:reduce){.tk-visual{transform:none !important}}
+
 /* ===== Countdown ===== */
 .cd{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:10px}
 .cd-lab{font-size:13px;font-weight:600;letter-spacing:.3px;color:var(--orange-lt)}
@@ -221,8 +237,8 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
     </div>
     <p class="hero-sub">Die Automatenkonferenz geht in die n&auml;chste Runde. Sichere dir deinen Platz f&uuml;r n&auml;chstes Jahr jetzt zum Insider-Preis.</p>
     <div class="hero-cta">
-      <a class="btn lg js-checkout" data-pos="hero" data-id="vs27-insider" data-value="49" href="https://myablefy.com/s/spaetimat/vending-summit-2/payment">Insider-Ticket f&uuml;r 49&nbsp;&euro; sichern<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
-      <span class="hero-note">statt <s>149&nbsp;&euro;</s> &middot; <a href="#ticket">VIP f&uuml;r 299&nbsp;&euro; statt <s>499&nbsp;&euro;</s></a> &middot; netto zzgl. MwSt.</span>
+      <a class="btn lg" href="#ticket">Tickets zum Insider-Preis<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></span></a>
+      <span class="hero-note">Basic <b>49&nbsp;&euro;</b> statt <s>149&nbsp;&euro;</s> &middot; VIP <b>299&nbsp;&euro;</b> statt <s>499&nbsp;&euro;</s> &middot; netto zzgl. MwSt.</span>
     </div>
   </div>
 </header>
@@ -238,12 +254,13 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
     </div>
     <div class="tk-cards">
       <div class="tk-card">
+        <div class="tk-visual"><img src="/img/ticket-basic-2027.webp" width="1000" height="324" alt="Basic-Ticket Vending Summit 2027, 12.06.2027 in D&uuml;pow"></div>
         <div class="tk-head">
           <div>
-            <div class="tk-name">Insider-Ticket</div>
+            <div class="tk-name">Basic</div>
             <div class="tk-for">Vending Summit 2027 &middot; 12.06.2027</div>
           </div>
-          <span class="badge">Nur auf dem Summit 2026</span>
+          <span class="badge">Insider-Preis</span>
         </div>
         <div class="tk-price"><span class="now">49<small>&nbsp;&euro;</small></span><span class="old">149&nbsp;&euro;</span></div>
         <div class="tk-tax">pro Ticket, netto zzgl. MwSt.</div>
@@ -254,28 +271,29 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6200" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alle Sessions auf der Hauptb&uuml;hne</li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6200" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Automatenmesse mit allen Ausstellern</li>
         </ul>
-        <a class="btn block js-checkout" data-pos="card-insider" data-id="vs27-insider" data-value="49" href="https://myablefy.com/s/spaetimat/vending-summit-2/payment">Insider-Ticket f&uuml;r 49&nbsp;&euro;<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+        <a class="btn block js-checkout" data-pos="card-basic" data-id="vs27-basic" data-value="49" href="https://myablefy.com/s/spaetimat/vending-summit-2/payment">Basic f&uuml;r 49&nbsp;&euro; sichern<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         <p class="tk-fine">Sicherer Checkout &uuml;ber Ablefy</p>
       </div>
       <div class="tk-card vip">
+        <div class="tk-visual"><img src="/img/ticket-vip-2027.webp" width="1000" height="332" alt="VIP-Ticket Vending Summit 2027, 12.06.2027 in D&uuml;pow"></div>
         <div class="tk-head">
           <div>
-            <div class="tk-name">VIP-Ticket</div>
+            <div class="tk-name">VIP</div>
             <div class="tk-for">Vending Summit 2027 &middot; 12.06.2027</div>
           </div>
-          <span class="badge vip">&#11088; VIP</span>
+          <span class="badge vip">Insider-Preis</span>
         </div>
         <div class="tk-price"><span class="now">299<small>&nbsp;&euro;</small></span><span class="old">499&nbsp;&euro;</span></div>
         <div class="tk-tax">pro Ticket, netto zzgl. MwSt.</div>
         <span class="save vip">Du sparst 200&nbsp;&euro;</span>
         <div class="perf" aria-hidden="true"></div>
         <ul class="tk-list">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alles aus dem Insider-Ticket</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alles aus dem Basic-Ticket</li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Exklusives VIP-Dinner am Abend mit dem Sp&auml;tiMat- und HEST-Team</li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sitzpl&auml;tze in den ersten Reihen</li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alle Pr&auml;sentationen und Fotos im Nachgang</li>
         </ul>
-        <a class="btn block js-checkout js-vip" data-pos="card-vip" data-id="vs27-vip" data-value="299" href="#ticket">VIP-Ticket f&uuml;r 299&nbsp;&euro;<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+        <a class="btn block js-checkout js-vip" data-pos="card-vip" data-id="vs27-vip" data-value="299" href="#ticket">VIP f&uuml;r 299&nbsp;&euro; sichern<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         <p class="tk-fine">Sicherer Checkout &uuml;ber Ablefy</p>
       </div>
     </div>
@@ -295,10 +313,10 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
   <div class="wrap">
     <span class="eyebrow" style="color:var(--orange-lt)">12.06.2027 &middot; D&uuml;pow</span>
     <h2>Wir sehen uns <span class="serif">wieder.</span></h2>
-    <p>Insider-Ticket f&uuml;r 49&nbsp;&euro; statt 149&nbsp;&euro;, VIP f&uuml;r 299&nbsp;&euro; statt 499&nbsp;&euro;.</p>
+    <p>Nur bis zum 28.11.: Basic f&uuml;r 49&nbsp;&euro; statt 149&nbsp;&euro;, VIP f&uuml;r 299&nbsp;&euro; statt 499&nbsp;&euro;.</p>
     <div class="close-cta">
-      <a class="btn lg js-checkout" data-pos="closing-insider" data-id="vs27-insider" data-value="49" href="https://myablefy.com/s/spaetimat/vending-summit-2/payment">Insider-Ticket<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
-      <a class="btn lg ghost js-checkout js-vip" data-pos="closing-vip" data-id="vs27-vip" data-value="299" href="#ticket">VIP-Ticket<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+      <a class="btn lg js-checkout" data-pos="closing-basic" data-id="vs27-basic" data-value="49" href="https://myablefy.com/s/spaetimat/vending-summit-2/payment">Basic &middot; 49&nbsp;&euro;<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+      <a class="btn lg ghost js-checkout js-vip" data-pos="closing-vip" data-id="vs27-vip" data-value="299" href="#ticket">VIP &middot; 299&nbsp;&euro;<span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -320,7 +338,7 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
 
 <!-- ===== Sticky-Leiste (Handy) ===== -->
 <div class="sticky" id="sticky" aria-hidden="true">
-  <div class="p"><b>ab 49&nbsp;&euro;</b><span data-cd-sticky>Tickets 2027 &middot; Insider &amp; VIP</span></div>
+  <div class="p"><b>ab 49&nbsp;&euro;</b><span data-cd-sticky>Tickets 2027 &middot; Basic &amp; VIP</span></div>
   <a class="btn" href="#ticket" tabindex="-1">Ticket w&auml;hlen<span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
 </div>
 
@@ -338,7 +356,7 @@ src="https://www.facebook.com/tr?id=1544241537270144&ev=PageView&noscript=1"
         var k='vs27_ic_'+a.dataset.id; if(sessionStorage.getItem(k)) return;
         sessionStorage.setItem(k,'1');
       }catch(e){}
-      if(window.fbq) fbq('track','InitiateCheckout',{content_ids:[a.dataset.id],content_type:'product',content_name:(a.dataset.id==='vs27-vip'?'VIP':'Insider')+'-Ticket Vending Summit 2027',value:Number(a.dataset.value),currency:'EUR',num_items:1,position:a.dataset.pos});
+      if(window.fbq) fbq('track','InitiateCheckout',{content_ids:[a.dataset.id],content_type:'product',content_name:(a.dataset.id==='vs27-vip'?'VIP':'Basic')+'-Ticket Vending Summit 2027',value:Number(a.dataset.value),currency:'EUR',num_items:1,position:a.dataset.pos});
     });
   });
 
