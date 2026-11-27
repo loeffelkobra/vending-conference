@@ -12,6 +12,7 @@ Zwei Varianten, gleicher Inhalt, gleiche Links und Merge-Tags:
   Betreffzeilen, Preview-Texte und Versandplan stehen in `SEQUENZ.md`.
 - `reminder-morgen.html` – Erinnerung an alle Ticketkäufer am Vortag (27.11.), mit Freunde-Code **SM50** (50 % für bis zu 4 Begleitungen).
   Betreff: „Du bist morgen dabei!“, Preview-Text: „Dein Ticket ist gebucht: Morgen, Sa 28.11. in Düpow. Wir halten deinen Platz frei. Plus: Code SM50 für deine Begleitung.“
+  `reminder-morgen-applemail.html` ist dieselbe Mail ohne Mailchimp-Merge-Tags (für Versand über Apple Mail: in Safari öffnen, Ablage → Teilen → Diese Seite per E-Mail senden).
 
 Hinweis zur v2: Headline und Speaker im Hero sind als Bild gebaut (`img/v2/hero.jpg`), damit der Look in allen Mail-Clients
 identisch ist. Datum, Text, Buttons und alles darunter sind echter Text.
