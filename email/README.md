@@ -13,6 +13,10 @@ Zwei Varianten, gleicher Inhalt, gleiche Links und Merge-Tags:
 - `reminder-morgen.html` – Erinnerung an alle Ticketkäufer am Vortag (27.11.), mit Freunde-Code **SM50** (50 % für bis zu 4 Begleitungen).
   Betreff: „Du bist morgen dabei!“, Preview-Text: „Dein Ticket ist gebucht: Morgen, Sa 28.11. in Düpow. Wir halten deinen Platz frei. Plus: Code SM50 für deine Begleitung.“
   `reminder-morgen-applemail.html` ist dieselbe Mail ohne Mailchimp-Merge-Tags (für Versand über Apple Mail: in Safari öffnen, Ablage → Teilen → Diese Seite per E-Mail senden).
+- `lastminute-morgen.html` – Last-Minute-Mail am Vortag an alle, die noch kein Ticket haben. Bewusst schlicht im Stil einer privaten Mail von Jonas
+  (weißer Hintergrund, Systemschrift, kein Header), mit Infos für morgen, Anfahrt (Google Maps / Apple Karten) und einem Ticket-Button.
+  Betreff: „Morgen in Düpow (kommst du noch?)“, Preview-Text: „Morgen früh geht’s los. Falls du spontan bist: Ein Ticket kannst du dir jetzt noch sichern.“
+  Käufer per „Nicht senden an“ ausschließen (Tag „Ticket VS26“).
 
 Hinweis zur v2: Headline und Speaker im Hero sind als Bild gebaut (`img/v2/hero.jpg`), damit der Look in allen Mail-Clients
 identisch ist. Datum, Text, Buttons und alles darunter sind echter Text.
