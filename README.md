@@ -46,6 +46,13 @@ Alternativ per CLI: `npx vercel --prod` im Projektordner.
   - Meta Pixel: `PageView` und `InitiateCheckout` (`vs27-basic` 49 € / `vs27-vip` 299 €), je Ticket einmal pro Sitzung.
   - **Achtung:** `danke.html` ist auf 2026 zugeschnitten (ein 49-€-Kauf würde als Last-Minute 2026 gewertet),
     darum bei den 2027-Produkten in Ablefy vorerst nicht `/danke` als Danke-Seite eintragen.
+- `gewinnspiel.html` – Gewinnspiel-Seite unter `/gewinnspiel` für den QR-Code auf der Bühne (28.11.2026): 1.000 € Erstbefüllung
+  (Snaxpress24) und PS5 (SpätiMat). Nur Name als Pflichtfeld, Teilnahmebedingungen als Entwurf auf der Seite.
+  Speichert über Supabase-Projekt „SpätiMat Website / Funnels“: Tabelle `public.gewinnspiel_teilnahmen` (RLS an, kein direkter Zugriff),
+  Funktion `gewinnspiel_teilnehmen` (öffentlich, führt gleiche Namen pro Gewinnspiel zusammen, keine IP-Sperre,
+  Teilnahmeschluss 28.11.2026 18:00 Uhr) und `gewinnspiel_liste` (nur mit Team-Passwort).
+- `gewinnspiel-ziehung.html` – Team-Ansicht unter `/gewinnspiel-ziehung`: Liste je Gewinnspiel, Zufallsziehung, CSV-Export.
+  Passwort nicht im Repo. Daten nach der Gewinnerbenachrichtigung löschen (spätestens 30 Tage, siehe Teilnahmebedingungen).
 - `vercel.json` – Clean URLs + Security-Header
 - `_source/` – ursprünglicher TextEdit-Export (wird nicht deployt)
 

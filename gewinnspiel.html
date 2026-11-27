@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<title>Gewinnspiel | Vending Summit 2026</title>
+<meta name="description" content="Gewinnspiele auf dem Vending Summit 2026: 1.000 € Erstbefüllung von Snaxpress24 und eine PlayStation 5 von SpätiMat. Verlosung am 28.11.2026 um 18:00 Uhr.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A0806">
+<meta property="og:title" content="Gewinnspiel | Vending Summit 2026">
+<meta property="og:description" content="1.000 € Erstbefüllung oder eine PlayStation 5. Verlosung um 18:00 Uhr.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://daspejznvrhkayrapqsl.supabase.co" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0A0A; --bg:#0A0806; --card:#15110E; --line:rgba(255,255,255,.12); --muted:rgba(255,255,255,.62);
+  --orange:#FF6200; --orange-dk:#E04500; --orange-lt:#FF8A3D;
+  --sans:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --grad-cta:linear-gradient(135deg,#FF7A1F 0%,var(--orange) 45%,var(--orange-dk) 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--bg);color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100svh;
+  background-image:radial-gradient(120% 60% at 50% -10%,rgba(255,98,0,.28) 0%,rgba(255,98,0,0) 60%),radial-gradient(100% 50% at 50% 110%,rgba(255,98,0,.18) 0%,rgba(255,98,0,0) 60%)}
+a{color:inherit}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.wrap{max-width:560px;margin:0 auto;padding:22px 18px calc(40px + env(safe-area-inset-bottom))}
+
+.top{display:flex;justify-content:center;padding-top:6px}
+.top img{width:132px;height:auto}
+.kicker{margin-top:26px;display:flex;justify-content:center;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-lt)}
+.kicker .live{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(255,98,0,.25);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(255,98,0,0)}}
+h1{margin-top:12px;text-align:center;font-size:clamp(36px,10vw,52px);line-height:1.02;font-weight:800;letter-spacing:-.04em}
+h1 .serif{color:var(--orange-lt)}
+.lead{margin-top:12px;text-align:center;font-size:16.5px;color:var(--muted)}
+.lead b{color:#fff}
+
+.step{margin-top:30px;font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;justify-content:space-between;align-items:center}
+.step button{font:inherit;font-size:13px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--orange-lt);background:none;border:0;padding:4px 0;cursor:pointer}
+
+.prize{position:relative;display:block;margin-top:12px;padding:18px 18px 16px 18px;border-radius:20px;background:var(--card);border:1.5px solid var(--line);cursor:pointer;transition:border-color .15s,background .15s,transform .1s;-webkit-tap-highlight-color:transparent}
+.prize:active{transform:scale(.99)}
+.prize input{position:absolute;opacity:0;pointer-events:none}
+.prize-top{display:flex;gap:14px;align-items:flex-start}
+.prize-ic{flex-shrink:0;width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:26px;background:rgba(255,98,0,.14)}
+.prize-txt{flex:1;min-width:0}
+.prize-by{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-lt)}
+.prize-name{margin-top:2px;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:-.02em}
+.prize-sub{font-size:14.5px;color:var(--muted)}
+.tick{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.28);display:grid;place-items:center;transition:all .15s}
+.tick svg{opacity:0;transition:opacity .15s}
+.cond{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:14px;color:rgba(255,255,255,.75)}
+.cond b{color:#fff;font-weight:600}
+.cond a{color:var(--orange-lt);font-weight:600;text-decoration:none}
+.prize:has(input:checked){border-color:var(--orange);background:linear-gradient(180deg,rgba(255,98,0,.14) 0%,rgba(255,98,0,.05) 100%)}
+.prize:has(input:checked) .tick{background:var(--orange);border-color:var(--orange)}
+.prize:has(input:checked) .tick svg{opacity:1}
+.prize.on{border-color:var(--orange);background:linear-gradient(180deg,rgba(255,98,0,.14) 0%,rgba(255,98,0,.05) 100%)}
+.prize.on .tick{background:var(--orange);border-color:var(--orange)}
+.prize.on .tick svg{opacity:1}
+.prize:focus-within{outline:2px solid var(--orange-lt);outline-offset:3px}
+
+.field{margin-top:12px}
+.field input{width:100%;font:inherit;font-size:18px;font-weight:600;color:#fff;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;outline:none;transition:border-color .15s}
+.field input::placeholder{color:rgba(255,255,255,.35);font-weight:500}
+.field input:focus{border-color:var(--orange)}
+.hint{margin-top:8px;font-size:13px;color:rgba(255,255,255,.5)}
+
+.check{margin-top:18px;display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:rgba(255,255,255,.8);cursor:pointer}
+.check input{flex-shrink:0;width:22px;height:22px;margin-top:1px;accent-color:var(--orange)}
+.check a{color:var(--orange-lt);font-weight:600}
+
+.btn{margin-top:22px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 18px 18px 24px;border:0;border-radius:16px;background:var(--grad-cta);color:#fff;font:inherit;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 14px 30px -12px rgba(255,98,0,.7);transition:transform .1s,opacity .15s;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.99)}
+.btn[disabled]{opacity:.55;cursor:default}
+.btn .arr{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--orange)}
+.btn.ghost{background:rgba(255,255,255,.08);border:1px solid var(--line);box-shadow:none;justify-content:center}
+.err{margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,70,50,.12);border:1px solid rgba(255,70,50,.35);color:#FFB4A8;font-size:14.5px;display:none}
+.err.show{display:block}
+.draw{margin-top:16px;text-align:center;font-size:14px;color:var(--muted)}
+.draw b{color:#fff}
+
+/* success */
+.done{display:none;margin-top:30px;text-align:center}
+.done.show{display:block}
+.done-ic{margin:0 auto;width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--grad-cta);box-shadow:0 0 0 10px rgba(255,98,0,.14),0 20px 40px -12px rgba(255,98,0,.7);animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.done h2{margin-top:22px;font-size:40px;line-height:1.05;font-weight:800;letter-spacing:-.04em}
+.done h2 .serif{color:var(--orange-lt)}
+.done .sub{margin-top:8px;font-size:18px;font-weight:600}
+.done-list{margin:22px 0 0;display:grid;gap:10px;text-align:left}
+.done-item{padding:14px 16px;border-radius:16px;background:var(--card);border:1px solid var(--line);font-size:14.5px;color:rgba(255,255,255,.78)}
+.done-item b{display:block;color:#fff;font-size:16px}
+.done-name{margin-top:6px;font-size:15px;color:var(--muted)}
+
+/* Bedingungen */
+.terms{margin-top:34px;border-top:1px solid var(--line);padding-top:6px}
+.terms summary{list-style:none;cursor:pointer;padding:14px 0;font-weight:700;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+.terms summary::-webkit-details-marker{display:none}
+.terms summary::after{content:"+";font-size:22px;color:var(--orange-lt);font-weight:500}
+.terms[open] summary::after{content:"–"}
+.terms h3{margin-top:16px;font-size:14px;font-weight:700;color:#fff}
+.terms p,.terms li{margin-top:6px;font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.68)}
+.terms ul{padding-left:18px}
+.terms a{color:var(--orange-lt)}
+.foot{margin-top:28px;text-align:center;font-size:12.5px;color:rgba(255,255,255,.45)}
+.foot a{color:rgba(255,255,255,.7);text-decoration:none;margin:0 7px}
+@media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</head><body>
+<main class="wrap">
+  <div class="top"><img src="/email/img/v2/logo-orange.png" width="132" height="33" alt="Vending Summit"></div>
+  <div class="kicker"><span class="live"></span>Live vom Vending Summit</div>
+  <h1>Gewinnspiel. <span class="serif">Zwei Preise.</span></h1>
+  <p class="lead">Gewinnspiel w&auml;hlen, Namen eintragen, fertig. Verlosung <b data-when>am Sa, 28.11., um 18:00&nbsp;Uhr</b>.</p>
+
+  <form id="form" novalidate>
+    <div class="step"><span>1 &middot; W&auml;hle dein Gewinnspiel</span><button type="button" id="both">Beide ausw&auml;hlen</button></div>
+
+    <label class="prize" data-prize="erstbefuellung">
+      <input type="checkbox" name="spiel" value="erstbefuellung">
+      <div class="prize-top">
+        <span class="prize-ic" aria-hidden="true">&#128230;</span>
+        <div class="prize-txt">
+          <div class="prize-by">Von Snaxpress24</div>
+          <div class="prize-name">1.000&nbsp;&euro; Erstbef&uuml;llung</div>
+          <div class="prize-sub">f&uuml;r deinen Automaten</div>
+        </div>
+        <span class="tick" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+      </div>
+      <div class="cond"><b>So nimmst du teil:</b> Du bist Kunde bei Snaxpress24 oder fragst heute ein H&auml;ndlerkonto bei Snaxpress24 an.</div>
+    </label>
+
+    <label class="prize" data-prize="ps5">
+      <input type="checkbox" name="spiel" value="ps5">
+      <div class="prize-top">
+        <span class="prize-ic" aria-hidden="true">&#127918;</span>
+        <div class="prize-txt">
+          <div class="prize-by">Black-Friday-Deal von Sp&auml;tiMat</div>
+          <div class="prize-name">PlayStation&nbsp;5</div>
+          <div class="prize-sub">Wir verschenken eine PS5</div>
+        </div>
+        <span class="tick" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+      </div>
+      <div class="cond"><b>So nimmst du teil:</b> Poste eine Story vom Vending Summit und markiere <a href="https://www.instagram.com/jonaswieck/" target="_blank" rel="noopener">@jonaswieck</a> und <a href="https://www.instagram.com/snackmesnackautomaten/" target="_blank" rel="noopener">@snackmesnackautomaten</a>.</div>
+    </label>
+
+    <div class="step"><span>2 &middot; Dein Name</span></div>
+    <div class="field"><input id="name" name="name" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="send" maxlength="80" placeholder="Vor- und Nachname" required></div>
+    <p class="hint">Mehr brauchen wir nicht. Keine E-Mail, keine Telefonnummer.</p>
+
+    <label class="check"><input type="checkbox" id="ok"><span>Ich erf&uuml;lle die <a href="#bedingungen" id="termsLink">Teilnahmebedingungen</a>. <span style="color:rgba(255,255,255,.45)">(optional)</span></span></label>
+
+    <div class="err" id="err" role="alert"></div>
+    <button class="btn" type="submit" id="submit">Jetzt teilnehmen<span class="arr"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
+    <p class="draw">Verlosung <b data-when>am Sa, 28.11., um 18:00&nbsp;Uhr</b></p>
+  </form>
+
+  <section class="done" id="done" aria-live="polite">
+    <div class="done-ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2>Du bist <span class="serif">dabei.</span></h2>
+    <p class="sub">Verlosung <span data-when>am Sa, 28.11., um 18:00&nbsp;Uhr</span>.</p>
+    <p class="done-name" id="doneName"></p>
+    <div class="done-list" id="doneList"></div>
+    <button class="btn ghost" type="button" id="again">Weitere Person eintragen</button>
+  </section>
+
+  <details class="terms" id="bedingungen">
+    <summary>Teilnahmebedingungen</summary>
+    <h3>1. Veranstalter</h3>
+    <p>Veranstalter der Gewinnspiele ist die Sp&auml;tiMat GmbH (Anschrift siehe <a href="https://www.spaetimat.com/privacy-policy" target="_blank" rel="noopener">Impressum</a>). Der Preis &bdquo;1.000&nbsp;&euro; Erstbef&uuml;llung&ldquo; wird von Snaxpress24 zur Verf&uuml;gung gestellt. Die PlayStation&nbsp;5 ist ein Gewinnspiel der Sp&auml;tiMat GmbH und steht in keinem Zusammenhang mit Snaxpress24.</p>
+    <h3>2. Teilnahme</h3>
+    <ul>
+      <li>Teilnehmen k&ouml;nnen Personen ab 18 Jahren, die am 28.11.2026 vor Ort beim Vending Summit in D&uuml;pow sind. Die Teilnahme ist kostenlos.</li>
+      <li>Teilnahmeschluss ist der 28.11.2026 um 18:00 Uhr. Teilgenommen wird &uuml;ber dieses Formular mit Angabe des Namens.</li>
+      <li><b>Erstbef&uuml;llung:</b> Voraussetzung ist, dass du Kunde bei Snaxpress24 bist oder am 28.11.2026 ein H&auml;ndlerkonto bei Snaxpress24 anfragst.</li>
+      <li><b>PlayStation&nbsp;5:</b> Voraussetzung ist eine Instagram-Story vom Vending Summit, in der @jonaswieck und @snackmesnackautomaten markiert sind.</li>
+      <li>Jede Person kann pro Gewinnspiel einmal gewinnen. Mehrfache Eintragungen mit demselben Namen werden zusammengef&uuml;hrt.</li>
+      <li>Mitarbeitende der Sp&auml;tiMat GmbH und von Snaxpress24 sind von der Teilnahme ausgeschlossen.</li>
+    </ul>
+    <h3>3. Ablauf und Gewinner</h3>
+    <ul>
+      <li>Die Gewinner werden am 28.11.2026 um 18:00 Uhr je Gewinnspiel per Zufall aus allen Teilnahmen gezogen und vor Ort bekannt gegeben.</li>
+      <li>Der Gewinner muss die jeweilige Teilnahmevoraussetzung nachweisen k&ouml;nnen. Ist das nicht m&ouml;glich oder ist der Gewinner nicht erreichbar, wird neu gezogen.</li>
+      <li>Eine Barauszahlung oder ein Umtausch der Gewinne ist nicht m&ouml;glich.</li>
+    </ul>
+    <h3>4. Instagram</h3>
+    <p>Das Gewinnspiel steht in keiner Verbindung zu Instagram oder Meta und wird von diesen weder gesponsert noch unterst&uuml;tzt.</p>
+    <h3>5. Rechtsweg</h3>
+    <p>Der Rechtsweg ist ausgeschlossen. Die Sp&auml;tiMat GmbH beh&auml;lt sich vor, das Gewinnspiel bei technischen Problemen oder Missbrauch abzubrechen oder Teilnehmende auszuschlie&szlig;en.</p>
+    <h3>6. Datenschutz</h3>
+    <p>Wir speichern nur den angegebenen Namen, die Auswahl der Gewinnspiele und den Zeitpunkt der Teilnahme, ausschlie&szlig;lich zur Durchf&uuml;hrung der Verlosung (Art. 6 Abs. 1 lit. b DSGVO). Die Daten werden in der EU (Frankfurt) gespeichert und nach Abschluss der Gewinnspiele, sp&auml;testens 30 Tage nach der Verlosung, gel&ouml;scht. Beim Gewinnspiel &bdquo;Erstbef&uuml;llung&ldquo; geben wir den Namen des Gewinners an Snaxpress24 weiter, damit der Gewinn &uuml;bergeben werden kann. Mehr in unserer <a href="https://www.spaetimat.com/datenschutz" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a>.</p>
+  </details>
+
+  <p class="foot">&copy; 2026 Sp&auml;tiMat GmbH<br><a href="https://www.spaetimat.com/privacy-policy">Impressum</a><a href="https://www.spaetimat.com/datenschutz">Datenschutz</a></p>
+</main>
+
+<script>
+(function(){
+  var SB_URL = 'https://daspejznvrhkayrapqsl.supabase.co';
+  var SB_KEY = 'sb_publishable_eTwfrcc0dcWEc2TzTv0M3Q_v15ZOMz3';
+  var CLOSE = new Date('2026-11-28T18:00:00+01:00').getTime();
+  var NAMES = {erstbefuellung:'1.000 € Erstbefüllung', ps5:'PlayStation 5'};
+  var HINTS = {
+    erstbefuellung:'Denk dran: Kunde bei Snaxpress24 sein oder heute ein Händlerkonto anfragen.',
+    ps5:'Denk dran: Story posten und @jonaswieck und @snackmesnackautomaten markieren.'
+  };
+
+  var form = document.getElementById('form'), err = document.getElementById('err'), btn = document.getElementById('submit');
+  var done = document.getElementById('done'), nameEl = document.getElementById('name');
+  var boxes = [].slice.call(document.querySelectorAll('input[name="spiel"]'));
+
+  // "heute" nur am Veranstaltungstag
+  var day = function(t){ return new Intl.DateTimeFormat('de-DE',{timeZone:'Europe/Berlin',year:'numeric',month:'2-digit',day:'2-digit'}).format(t); };
+  if(day(Date.now()) === day(CLOSE)) document.querySelectorAll('[data-when]').forEach(function(el){ el.innerHTML = 'heute um 18:00&nbsp;Uhr'; });
+
+  // Fallback-Markierung für Browser ohne :has()
+  function sync(){ boxes.forEach(function(b){ b.closest('.prize').classList.toggle('on', b.checked); }); }
+  boxes.forEach(function(b){ b.addEventListener('change', function(){ sync(); hideErr(); }); });
+  document.getElementById('both').addEventListener('click', function(){ boxes.forEach(function(b){ b.checked = true; }); sync(); hideErr(); });
+  document.getElementById('termsLink').addEventListener('click', function(){ document.getElementById('bedingungen').open = true; });
+
+  function showErr(t){ err.textContent = t; err.classList.add('show'); }
+  function hideErr(){ err.classList.remove('show'); }
+
+  function closed(){
+    form.querySelectorAll('input,button').forEach(function(el){ el.disabled = true; });
+    showErr('Die Teilnahme ist beendet. Die Verlosung lief um 18:00 Uhr.');
+  }
+  if(Date.now() >= CLOSE) closed();
+
+  function showDone(name, spiele){
+    form.style.display = 'none'; done.classList.add('show');
+    document.getElementById('doneName').textContent = 'Eingetragen als ' + name;
+    document.getElementById('doneList').innerHTML = spiele.map(function(s){
+      return '<div class="done-item"><b>' + NAMES[s] + '</b>' + HINTS[s] + '</div>';
+    }).join('');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  document.getElementById('again').addEventListener('click', function(){
+    done.classList.remove('show'); form.style.display = '';
+    form.reset(); sync(); hideErr(); nameEl.focus();
+    try{ localStorage.removeItem('vs_gewinnspiel'); }catch(e){}
+  });
+
+  // Wer schon teilgenommen hat, sieht beim erneuten Öffnen die Bestätigung
+  try{
+    var saved = JSON.parse(localStorage.getItem('vs_gewinnspiel') || 'null');
+    if(saved && saved.name && saved.spiele && Date.now() < CLOSE) showDone(saved.name, saved.spiele);
+  }catch(e){}
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); hideErr();
+    var spiele = boxes.filter(function(b){ return b.checked; }).map(function(b){ return b.value; });
+    var name = nameEl.value.replace(/\s+/g,' ').trim();
+    if(!spiele.length){ showErr('Bitte wähle mindestens ein Gewinnspiel aus.'); return; }
+    if(name.length < 2){ showErr('Bitte gib deinen Namen ein.'); nameEl.focus(); return; }
+    if(Date.now() >= CLOSE){ closed(); return; }
+    btn.disabled = true; btn.firstChild.textContent = 'Wird gesendet …';
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctrl) ctrl.abort(); }, 15000);
+    fetch(SB_URL + '/rest/v1/rpc/gewinnspiel_teilnehmen', {
+      method:'POST', signal: ctrl ? ctrl.signal : undefined,
+      headers:{'apikey':SB_KEY, 'Authorization':'Bearer ' + SB_KEY, 'Content-Type':'application/json'},
+      body: JSON.stringify({p_name:name, p_spiele:spiele, p_bedingungen:document.getElementById('ok').checked})
+    }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+    .then(function(res){
+      clearTimeout(timer);
+      if(!res.ok){
+        var m = res.j && res.j.message;
+        if(m === 'closed'){ closed(); return; }
+        if(m === 'name_invalid'){ showErr('Bitte gib einen gültigen Namen ein (2 bis 80 Zeichen).'); return; }
+        showErr('Das hat nicht geklappt. Bitte versuch es gleich nochmal.'); return;
+      }
+      try{ localStorage.setItem('vs_gewinnspiel', JSON.stringify({name:name, spiele:spiele})); }catch(e){}
+      showDone(name, spiele);
+    })
+    .catch(function(){ clearTimeout(timer); showErr('Keine Verbindung. Bitte prüf dein Internet und versuch es nochmal.'); })
+    .then(function(){ btn.disabled = false; btn.firstChild.textContent = 'Jetzt teilnehmen'; });
+  });
+})();
+</script>
+</body></html>

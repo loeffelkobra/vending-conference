@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<title>Ziehung | Gewinnspiel Vending Summit</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A0806">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0806;--card:#15110E;--line:rgba(255,255,255,.12);--muted:rgba(255,255,255,.6);--orange:#FF6200;--orange-dk:#E04500;--orange-lt:#FF8A3D;
+  --sans:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;--serif:'Instrument Serif',Georgia,serif;
+  --grad:linear-gradient(135deg,#FF7A1F 0%,var(--orange) 45%,var(--orange-dk) 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;background-image:radial-gradient(100% 50% at 50% -10%,rgba(255,98,0,.25) 0%,rgba(255,98,0,0) 60%)}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:clamp(30px,5vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+h1 .serif{color:var(--orange-lt)}
+.sub{margin-top:6px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border:0;border-radius:12px;background:var(--grad);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.btn.ghost{background:rgba(255,255,255,.08);border:1px solid var(--line)}
+.btn[disabled]{opacity:.5;cursor:default}
+.login{max-width:380px;margin:60px auto 0;padding:26px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
+.login input{margin-top:14px;width:100%;font:inherit;font-size:17px;font-weight:600;color:#fff;background:#0E0B09;border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;outline:none;letter-spacing:1px}
+.login input:focus{border-color:var(--orange)}
+.login .btn{margin-top:12px;width:100%}
+.msg{margin-top:12px;font-size:14px;color:#FFB4A8;min-height:20px}
+.bar{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bar label{display:flex;gap:8px;align-items:center;font-size:14px;color:rgba(255,255,255,.8);margin-right:auto}
+.bar input{width:18px;height:18px;accent-color:var(--orange)}
+.grid{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.col{padding:22px;border-radius:22px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column}
+.col-by{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-lt)}
+.col h2{margin-top:2px;font-size:24px;font-weight:800;letter-spacing:-.02em}
+.count{margin-top:4px;color:var(--muted);font-size:14px}
+.count b{color:#fff}
+.stage{margin-top:16px;min-height:150px;border-radius:16px;background:#0E0B09;border:1px dashed rgba(255,255,255,.18);display:grid;place-items:center;text-align:center;padding:18px}
+.stage .ph{color:rgba(255,255,255,.4);font-size:14px}
+.stage .rolling{font-size:26px;font-weight:700;color:rgba(255,255,255,.75)}
+.stage .win-lab{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-lt)}
+.stage .win{margin-top:6px;font-size:clamp(28px,4vw,40px);line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.stage .win-meta{margin-top:6px;font-size:13px;color:var(--muted)}
+.col .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.col .actions .btn{flex:1}
+.drawn{margin-top:12px;font-size:13px;color:var(--muted)}
+.list{margin-top:16px;max-height:340px;overflow:auto;border-top:1px solid var(--line)}
+.list li{list-style:none;display:flex;justify-content:space-between;gap:10px;padding:8px 2px;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px}
+.list li span:last-child{color:var(--muted);white-space:nowrap}
+.list li.won{color:var(--orange-lt);font-weight:700}
+.ok{color:#6EE7A0}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style>
+</head><body>
+<main class="wrap">
+  <h1>Gewinnspiel-<span class="serif">Ziehung</span></h1>
+  <p class="sub">Vending Summit &middot; 28.11.2026 &middot; Teilnahmeschluss 18:00 Uhr</p>
+
+  <form class="login" id="login">
+    <b>Zugang f&uuml;rs Team</b>
+    <input id="pin" type="password" autocomplete="current-password" placeholder="Passwort" required>
+    <button class="btn" type="submit">Liste laden</button>
+    <p class="msg" id="msg"></p>
+  </form>
+
+  <section id="app" hidden>
+    <div class="bar">
+      <label><input type="checkbox" id="onlyOk"> Nur Teilnahmen mit best&auml;tigten Teilnahmebedingungen ziehen</label>
+      <button class="btn ghost" id="reload" type="button">Aktualisieren</button>
+      <button class="btn ghost" id="csv" type="button">CSV herunterladen</button>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="sub" id="stamp" style="margin-top:14px;font-size:13px"></p>
+  </section>
+</main>
+<script>
+(function(){
+  var SB_URL = 'https://daspejznvrhkayrapqsl.supabase.co';
+  var SB_KEY = 'sb_publishable_eTwfrcc0dcWEc2TzTv0M3Q_v15ZOMz3';
+  var GAMES = [
+    {id:'erstbefuellung', by:'Snaxpress24', name:'1.000 € Erstbefüllung'},
+    {id:'ps5', by:'Black-Friday-Deal von SpätiMat', name:'PlayStation 5'}
+  ];
+  var rows = [], drawn = {erstbefuellung:[], ps5:[]}, pin = '';
+  try{ pin = sessionStorage.getItem('vs_pin') || ''; drawn = JSON.parse(sessionStorage.getItem('vs_drawn') || 'null') || drawn; }catch(e){}
+
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+  var time = function(t){ return new Date(t).toLocaleTimeString('de-DE',{timeZone:'Europe/Berlin',hour:'2-digit',minute:'2-digit'}); };
+
+  function load(){
+    $('msg').textContent = '';
+    return fetch(SB_URL + '/rest/v1/rpc/gewinnspiel_liste', {
+      method:'POST', headers:{'apikey':SB_KEY,'Authorization':'Bearer ' + SB_KEY,'Content-Type':'application/json'},
+      body: JSON.stringify({p_pin:pin})
+    }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+    .then(function(res){
+      if(!res.ok){ $('msg').textContent = res.j && res.j.message === 'forbidden' ? 'Falsches Passwort.' : 'Laden fehlgeschlagen.'; $('login').hidden = false; $('app').hidden = true; return; }
+      try{ sessionStorage.setItem('vs_pin', pin); }catch(e){}
+      rows = res.j; $('login').hidden = true; $('app').hidden = false; render();
+      $('stamp').textContent = 'Stand: ' + new Date().toLocaleTimeString('de-DE',{timeZone:'Europe/Berlin'}) + ' Uhr · ' + rows.length + ' Einträge gesamt';
+    }).catch(function(){ $('msg').textContent = 'Keine Verbindung.'; });
+  }
+
+  function pool(g){
+    var only = $('onlyOk').checked;
+    return rows.filter(function(r){ return r.gewinnspiel === g && (!only || r.bedingungen_bestaetigt) && drawn[g].indexOf(r.name) < 0; });
+  }
+
+  function render(){
+    $('grid').innerHTML = GAMES.map(function(g){
+      var all = rows.filter(function(r){ return r.gewinnspiel === g.id; });
+      var last = drawn[g.id][drawn[g.id].length - 1];
+      var stage = last
+        ? '<div><div class="win-lab">' + (drawn[g.id].length > 1 ? drawn[g.id].length + '. Ziehung' : 'Gewinner') + '</div><div class="win">' + esc(last) + '</div></div>'
+        : '<div class="ph">Noch nicht gezogen</div>';
+      return '<div class="col" data-g="' + g.id + '">' +
+        '<div class="col-by">' + esc(g.by) + '</div><h2>' + esc(g.name) + '</h2>' +
+        '<div class="count"><b>' + all.length + '</b> Teilnahmen · ' + all.filter(function(r){ return r.bedingungen_bestaetigt; }).length + ' mit bestätigten Bedingungen</div>' +
+        '<div class="stage" id="stage-' + g.id + '">' + stage + '</div>' +
+        '<div class="actions"><button class="btn" data-draw="' + g.id + '"' + (all.length ? '' : ' disabled') + '>' + (last ? 'Neu ziehen (ohne bisherige)' : 'Gewinner ziehen') + '</button></div>' +
+        (drawn[g.id].length ? '<p class="drawn">Bereits gezogen: ' + drawn[g.id].map(esc).join(', ') + ' <a href="#" data-reset="' + g.id + '" style="color:var(--orange-lt)">zurücksetzen</a></p>' : '') +
+        '<ul class="list">' + all.map(function(r){
+          return '<li class="' + (drawn[g.id].indexOf(r.name) >= 0 ? 'won' : '') + '"><span>' + esc(r.name) + (r.bedingungen_bestaetigt ? ' <span class="ok">✓</span>' : '') + '</span><span>' + time(r.created_at) + '</span></li>';
+        }).join('') + '</ul></div>';
+    }).join('');
+  }
+
+  function rnd(n){ var a = new Uint32Array(1), lim = Math.floor(4294967296 / n) * n, x; do { crypto.getRandomValues(a); x = a[0]; } while(x >= lim); return x % n; }
+
+  function draw(g){
+    var p = pool(g);
+    if(!p.length){ alert('Keine (weiteren) Teilnahmen für dieses Gewinnspiel.'); return; }
+    var winner = p[rnd(p.length)].name, stage = $('stage-' + g), btn = document.querySelector('[data-draw="' + g + '"]'), i = 0;
+    btn.disabled = true;
+    var iv = setInterval(function(){
+      stage.innerHTML = '<div class="rolling">' + esc(p[rnd(p.length)].name) + '</div>';
+      if(++i > 24){ clearInterval(iv);
+        drawn[g].push(winner);
+        try{ sessionStorage.setItem('vs_drawn', JSON.stringify(drawn)); }catch(e){}
+        render();
+      }
+    }, 90);
+  }
+
+  document.addEventListener('click', function(e){
+    var d = e.target.closest('[data-draw]'); if(d){ draw(d.dataset.draw); return; }
+    var r = e.target.closest('[data-reset]'); if(r){ e.preventDefault(); if(confirm('Ziehungen für dieses Gewinnspiel zurücksetzen?')){ drawn[r.dataset.reset] = []; try{ sessionStorage.setItem('vs_drawn', JSON.stringify(drawn)); }catch(x){} render(); } }
+  });
+  $('login').addEventListener('submit', function(e){ e.preventDefault(); pin = $('pin').value.trim(); load(); });
+  $('reload').addEventListener('click', load);
+  $('onlyOk').addEventListener('change', render);
+  $('csv').addEventListener('click', function(){
+    var csv = 'gewinnspiel;name;bedingungen_bestaetigt;zeitpunkt\n' + rows.map(function(r){
+      return [r.gewinnspiel, '"' + String(r.name).replace(/"/g,'""') + '"', r.bedingungen_bestaetigt ? 'ja' : 'nein', new Date(r.created_at).toLocaleString('de-DE',{timeZone:'Europe/Berlin'})].join(';');
+    }).join('\n');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + csv], {type:'text/csv;charset=utf-8'}));
+    a.download = 'gewinnspiel-vending-summit-2026.csv'; a.click();
+  });
+  if(pin) load();
+})();
+</script>
+</body></html>
